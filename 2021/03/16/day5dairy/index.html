@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、LeetCode编程题">
+  <meta name="description" content="一、LeetCode编程题1.删除单链表节点复盘昨天Keep的笔试题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day5 Summary">
 <meta property="og:url" content="http://example.com/2021/03/16/day5dairy/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="一、LeetCode编程题">
+<meta property="og:description" content="一、LeetCode编程题1.删除单链表节点复盘昨天Keep的笔试题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-16T07:09:00.000Z">
-<meta property="article:modified_time" content="2021-03-16T07:32:28.165Z">
+<meta property="article:modified_time" content="2021-03-16T12:59:36.017Z">
 <meta property="article:author" content="DrunkAlone">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2021/03/16/day5dairy/">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-16 15:09:00 / 修改时间：15:32:28" itemprop="dateCreated datePublished" datetime="2021-03-16T15:09:00+08:00">2021-03-16</time>
+              <time title="创建时间：2021-03-16 15:09:00 / 修改时间：20:59:36" itemprop="dateCreated datePublished" datetime="2021-03-16T15:09:00+08:00">2021-03-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,7 +214,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2>
+        <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-删除单链表节点"><a href="#1-删除单链表节点" class="headerlink" title="1.删除单链表节点"></a>1.删除单链表节点</h4><p>复盘昨天Keep的笔试题。</p>
+<span id="more"></span>
+
+<p>题目描述：删除链表中等于给定值data的所有节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,7,5,6,7,8,7], 7</span><br><span class="line">输出: &#123;1,2,3,5,6,8&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>两种解法，第一种是在原链表上添加双指针比较删除；第二种是新建一个链表存放满足条件的节点。显然前者在空间上占优，但在脑子比较混沌的时期用后者也不失为一种蠢办法……</p>
+<p><strong>双指针法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNodes</span><span class="params">(ListNode l1, <span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">    ListNode p = l1;</span><br><span class="line">    ListNode q = l1.next;</span><br><span class="line">    <span class="keyword">while</span>(q != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(q.val == data) &#123;</span><br><span class="line">            p.next = q.next;</span><br><span class="line">            q = q.next;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            p = p.next;</span><br><span class="line">            q = q.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l1.val == data ? l1.next : l1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>新增链表存储法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNodes</span><span class="params">(ListNode l1, <span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode cur = dummyHead;</span><br><span class="line">    <span class="keyword">while</span>(l1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(l1.val == data) &#123;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            <span class="comment">//笔试时忘了以下判断，导致末尾符合条件的结点没有删除</span></span><br><span class="line">            <span class="keyword">if</span>(l1 == <span class="keyword">null</span>) &#123;</span><br><span class="line">                cur.next = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            cur.next = l1;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>单链表的删改。</p>
+<p><strong>回顾与总结：</strong>笔试时问题出在对链表的定义理解不透彻。事实上cur.next = l1这一语句是将cur指针所指的节点连接了l1节点，此时连接的不只是l1单个节点，还包括了l1所在链表在此之后的全部节点。</p>
+<p>假设cur所在链表：1-&gt;2-&gt;3；l1所在链表：6-&gt;7-&gt;8-&gt;9，此时cur指向3，l1指向7，cur.next = l1该语句会导致cur链表变成1-&gt;2-&gt;3-&gt;7-&gt;8-&gt;9。</p>
+<h4 id="2-爬楼梯"><a href="#2-爬楼梯" class="headerlink" title="2.爬楼梯"></a>2.爬楼梯</h4><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>注意：给定 n 是一个正整数。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： 2</span><br><span class="line">输出： 2</span><br><span class="line">解释： 有两种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶</span><br><span class="line">2.  2 阶</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>递归算法：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">2</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>)+climbStairs(n-<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态规划：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">2</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            temp = a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>递归、动态规划。动态规划会开专题记录学习。</p>
+<h4 id="3-删除链表中的重复元素"><a href="#3-删除链表中的重复元素" class="headerlink" title="3.删除链表中的重复元素"></a>3.删除链表中的重复元素</h4><p>给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;1-&gt;2</span><br><span class="line">输出: 1-&gt;2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;1-&gt;2-&gt;3-&gt;3</span><br><span class="line">输出: 1-&gt;2-&gt;3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>本题按照之前提到的双指针方法可以实现，但时间复杂度和空间复杂度较高，参考优解后发现可以使用递归实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)<span class="keyword">return</span> head;</span><br><span class="line">        <span class="keyword">if</span>(head.val == head.next.val)&#123;</span><br><span class="line">            head = deleteDuplicates(head.next);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            head.next = deleteDuplicates(head.next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>递归、单链表删改。</p>
+
     </div>
 
     
@@ -223,7 +266,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/java/" rel="tag"># java</a>
           </div>
 
         
@@ -235,7 +278,10 @@
     <a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
       <i class="fa fa-chevron-left"></i> 正则表达式
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/16/dynamic-programming/" rel="next" title="动态规划dynamic programming">
+      动态规划dynamic programming <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -294,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81LeetCode%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、LeetCode编程题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81LeetCode%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、LeetCode编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%A0%E9%99%A4%E5%8D%95%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.删除单链表节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.爬楼梯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.删除链表中的重复元素</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -308,20 +354,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
