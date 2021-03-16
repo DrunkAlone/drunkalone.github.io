@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java知识点总结一、LeetCode编程题1.外观数列给定一个正整数 n ，输出外观数列的第 n 项。 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。 前五项如下： 123456789101.     12.     113.     214.     12115.     111221       第一项是数字 1        描述前一项，这个数是 1 即">
+  <meta name="description" content="Java知识点总结一、LeetCode编程题1.外观数列给定一个正整数 n ，输出外观数列的第 n 项。 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day4 Summary">
 <meta property="og:url" content="http://example.com/2021/03/15/Day4/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="Java知识点总结一、LeetCode编程题1.外观数列给定一个正整数 n ，输出外观数列的第 n 项。 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。 前五项如下： 123456789101.     12.     113.     214.     12115.     111221       第一项是数字 1        描述前一项，这个数是 1 即">
+<meta property="og:description" content="Java知识点总结一、LeetCode编程题1.外观数列给定一个正整数 n ，输出外观数列的第 n 项。 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-15T06:19:05.000Z">
-<meta property="article:modified_time" content="2021-03-15T13:49:00.290Z">
+<meta property="article:modified_time" content="2021-03-16T01:42:01.152Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="递归算法">
@@ -191,10 +191,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-15 14:19:05 / 修改时间：21:49:00" itemprop="dateCreated datePublished" datetime="2021-03-15T14:19:05+08:00">2021-03-15</time>
+              <time title="创建时间：2021-03-15 14:19:05" itemprop="dateCreated datePublished" datetime="2021-03-15T14:19:05+08:00">2021-03-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-16 09:42:01" itemprop="dateModified" datetime="2021-03-16T09:42:01+08:00">2021-03-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -218,6 +224,8 @@
       
         <h1 id="Java知识点总结"><a href="#Java知识点总结" class="headerlink" title="Java知识点总结"></a>Java知识点总结</h1><h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-外观数列"><a href="#1-外观数列" class="headerlink" title="1.外观数列"></a>1.外观数列</h4><p>给定一个正整数 <code>n</code> ，输出外观数列的第 <code>n</code> 项。</p>
 <p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。</p>
+<span id="more"></span>
+
 <p>前五项如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br><span class="line">       第一项是数字 1 </span><br><span class="line">       描述前一项，这个数是 1 即 “ 一 个 1 ”，记作 &quot;11&quot;</span><br><span class="line">       描述前一项，这个数是 11 即 “ 二 个 1 ” ，记作 &quot;21&quot;</span><br><span class="line">       描述前一项，这个数是 21 即 “ 一 个 2 + 一 个 1 ” ，记作 &quot;1211&quot;</span><br><span class="line">       描述前一项，这个数是 1211 即 “ 一 个 1 + 一 个 2 + 二 个 1 ” ，记作 &quot;111221&quot;</span><br></pre></td></tr></table></figure>
 
@@ -247,7 +255,7 @@
 <li><p>dp[i]要么是当前数字，要么是与前面的最大子序和的和。</p>
 </li>
 </ul>
-<p>（编程练习之后的混杂感想：今天刷了道简单题，题目是给定一个只包含空格和单词的字符串，求出最后一个单词的长度，我眼残看成了“求最长单词的长度”，离谱的是我花了十分钟写出来之后提交发现居然通过了，通过了…..这就充分体现了测试用例少会导致多大的问题。）</p>
+<p>（编程练习之后的混杂感想：今天刷了道简单题，题目是给定一个只包含空格和单词的字符串，求出最后一个单词的长度，我眼残看成了“求最长单词的长度”，离谱的是我花了十分钟写出来之后提交发现居然通过了，通过了…..这就充分体现了测试用例的重要性。）</p>
 <h2 id="二、nowCoder客观题"><a href="#二、nowCoder客观题" class="headerlink" title="二、nowCoder客观题"></a>二、nowCoder客观题</h2><ul>
 <li><h4 id="Java反射机制"><a href="#Java反射机制" class="headerlink" title="Java反射机制"></a>Java反射机制</h4><p>Java反射机制主要提供了以下功能：</p>
 <p>（1）在运行时判断一个对象所属的类；</p>
@@ -270,7 +278,16 @@
 </li>
 </ul>
 <h2 id="三、笔试总结"><a href="#三、笔试总结" class="headerlink" title="三、笔试总结"></a>三、笔试总结</h2><p>今天参与了两场笔试，基本都没有希望。所以在这里做个总结，也为之后的学习方向做一些基础规划。</p>
-<p>1.参加浙江大华的笔试，三十道客观题，两道编程算法题。总体来说难度不大，但涉猎较广，比如客观题的考点从OS的wait（）和signal（）方法是什么类型的操作到Java的内存回收机制、hashmap的特性、各类List实例区别等，编程题第一题考点是递归算法，第二题考的是文件IO读写。</p>
+<ul>
+<li><p>参加浙江大华的笔试，三十道客观题，两道编程算法题。总体来说难度不大，但涉猎较广，比如客观题的考点从OS的wait（）和signal（）方法是什么类型的操作到Java的内存回收机制、hashmap的特性、各类List实例区别等，编程题第一题考点是类似猴子吃桃问题的递归算法，第二题考的是文件读写，使用BufferedReader，FileWriter等进行IO操作。这些考点放在哪个领域看都偏向于基础，但综合起来考，就不那么容易回答了。确定的题目寥寥无几，剩下的似懂非懂连蒙带猜，还是要感慨必须深入学习Java常见的类和方法啊。</p>
+</li>
+<li><p>Keep的笔试。只有三道编程题，时长80分钟，第一二题考点都是<strong>链表</strong>，第三题考点是<strong>字符串</strong>。同上，难度都不算大，第一题考察链表的删除元素，在我看来简直是基础中的基础，然而死活只能通过60%左右的用例，编程10分钟，找错半小时，只能选择放弃。第二题一看又是链表，结合第一题的失败经验，直接没细看，先跳到最后一题看看会不会简单一些。</p>
+<p>第三题的题目描述是这样的：给出一个字符串，在前面加入一个字符串使其成为回文串，求满足该条件的最短字符串。这题看到“回文”二字，我都觉得稳了，简简单单的字符串操作嘛。但是事实证明我又犯蠢了。在我自信满满地敲了三四十行代码点击提交后，显示只通过了60%的用例。不甘心，调试调试，继续删删改改，把通过率调到71%之后再也上不去了。这时候考试也差不多要结束了。</p>
+<p>心灰意冷之际也在考试结束后“复盘”了一波，把第三题再好好研究了一般，发现有些输出确实不合我意，为什么呢？找来找去发现问题的源头在“substring()”方法上，心里突然有了种可能，跑去搜了一下该方法的具体使用和参数设置，这才发现真的是因为我把参数弄错导致循环判断出错，回去之后改了参数就执行成功了。</p>
+<p><strong>substring(int startIndex, int endIndex)，虽然index是从0开始的，但endIndex这一索引是不包括在截取范围内的。也即是，substring(0,4)截取的是index从0-3的字符串，而不包括endIndex的“4”！</strong></p>
+</li>
+</ul>
+<p>血与泪的教训，吃一堑长一智，务必要从每一次失败中汲取经验，努力向优秀迈进啊。</p>
 
     </div>
 
