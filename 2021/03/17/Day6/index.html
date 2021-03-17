@@ -20,30 +20,36 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Forgiven">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="一、LeetCode编程题1.判断相同的树给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 示例 1：  12输入：p &#x3D; [1,2,3], q &#x3D; [1,2,3]输出：true  示例 2：  12输入：p &#x3D; [1,2], q &#x3D; [1,null,2]输出：fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day6 Summary">
+<meta property="og:url" content="http://example.com/2021/03/17/Day6/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="一、LeetCode编程题1.判断相同的树给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 示例 1：  12输入：p &#x3D; [1,2,3], q &#x3D; [1,2,3]输出：true  示例 2：  12输入：p &#x3D; [1,2], q &#x3D; [1,null,2]输出：fa">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/03/17/Day6/1.jpg">
+<meta property="og:image" content="http://example.com/2021/03/17/Day6/2.jpg">
+<meta property="article:published_time" content="2021-03-17T06:26:07.000Z">
+<meta property="article:modified_time" content="2021-03-17T13:51:54.203Z">
 <meta property="article:author" content="DrunkAlone">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/17/Day6/1.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/03/17/Day6/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Forgiven</title>
+  <title>Day6 Summary | Forgiven</title>
   
 
 
@@ -157,9 +163,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -175,10 +182,9 @@
       <meta itemprop="name" content="Forgiven">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/17/Day6/" class="post-title-link" itemprop="url">Day6 Summary</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Day6 Summary
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -211,7 +217,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-判断相同的树"><a href="#1-判断相同的树" class="headerlink" title="1.判断相同的树"></a>1.判断相同的树</h4><p>给你两棵二叉树的根节点 <code>p</code> 和 <code>q</code> ，编写一个函数来检验这两棵树是否相同。</p>
+        <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-判断相同的树"><a href="#1-判断相同的树" class="headerlink" title="1.判断相同的树"></a>1.判断相同的树</h4><p>给你两棵二叉树的根节点 <code>p</code> 和 <code>q</code> ，编写一个函数来检验这两棵树是否相同。</p>
 <p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
 <p><strong>示例 1：</strong></p>
 <p><img src="/2021/03/17/Day6/1.jpg" alt="1"></p>
@@ -292,715 +298,34 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">样例输入</span><br><span class="line">3</span><br><span class="line">1 2 4</span><br><span class="line">1 3 1</span><br><span class="line">1 2 1</span><br><span class="line">样例输出</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/dynamic-programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/dynamic-programming/" class="post-title-link" itemprop="url">动态规划dynamic programming</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-16 20:19:02 / 修改时间：21:03:20" itemprop="dateCreated datePublished" datetime="2021-03-16T20:19:02+08:00">2021-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%93%E9%A2%98%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">专题知识点</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><h2 id="什么是动态规划？"><a href="#什么是动态规划？" class="headerlink" title="什么是动态规划？"></a>什么是动态规划？</h2><p>动态规划（Dynamic Programming）是一种分阶段求解决策略的数学思想。大事化小，小事化了。</p></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/dynamic-programming/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/day5dairy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/day5dairy/" class="post-title-link" itemprop="url">Day5 Summary</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-16 15:09:00 / 修改时间：21:48:33" itemprop="dateCreated datePublished" datetime="2021-03-16T15:09:00+08:00">2021-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-删除单链表节点"><a href="#1-删除单链表节点" class="headerlink" title="1.删除单链表节点"></a>1.删除单链表节点</h4><p>复盘昨天Keep的笔试题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/day5dairy/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/16/dynamic-programming/" rel="prev" title="动态规划dynamic programming">
+      <i class="fa fa-chevron-left"></i> 动态规划dynamic programming
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-16 14:55:57 / 修改时间：15:37:12" itemprop="dateCreated datePublished" datetime="2021-03-16T14:55:57+08:00">2021-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%93%E9%A2%98%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">专题知识点</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h2><p>普通字符包括大写和小写字母、所有数字、标点符号和一些其他符号。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/Day5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/Day5/" class="post-title-link" itemprop="url">Java面试题之Java基础总结（二）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-16 09:56:32 / 修改时间：15:36:51" itemprop="dateCreated datePublished" datetime="2021-03-16T09:56:32+08:00">2021-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-Q：Java的反射机制是什么？"><a href="#1-Q：Java的反射机制是什么？" class="headerlink" title="1.Q：Java的反射机制是什么？"></a>1.Q：Java的反射机制是什么？</h3><p>Java反射机制是在运行状态下，对于任意一个类，都能知道这个类的所有属性和方法，对于任意一个对象，都能调用其任意方法和属性。简而言之，这种<strong>动态获取信息以及动态调用对象方法</strong>的功能称为Java语言的反射机制。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/Day5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/Day4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/15/Day4/" class="post-title-link" itemprop="url">Day4 Summary</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-15 14:19:05" itemprop="dateCreated datePublished" datetime="2021-03-15T14:19:05+08:00">2021-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 15:31:48" itemprop="dateModified" datetime="2021-03-16T15:31:48+08:00">2021-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-外观数列"><a href="#1-外观数列" class="headerlink" title="1.外观数列"></a>1.外观数列</h4><p>给定一个正整数 <code>n</code> ，输出外观数列的第 <code>n</code> 项。</p>
-<p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/15/Day4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/14/Day3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/14/Day3/" class="post-title-link" itemprop="url">Day3 Summary</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-14 14:28:03" itemprop="dateCreated datePublished" datetime="2021-03-14T14:28:03+08:00">2021-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 15:31:43" itemprop="dateModified" datetime="2021-03-16T15:31:43+08:00">2021-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-括号匹配"><a href="#1-括号匹配" class="headerlink" title="1.括号匹配"></a>1.括号匹配</h4><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/14/Day3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/13/Day2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/13/Day2/" class="post-title-link" itemprop="url">Java面试题之Java基础总结（一）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-13 11:49:01" itemprop="dateCreated datePublished" datetime="2021-03-13T11:49:01+08:00">2021-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 15:34:44" itemprop="dateModified" datetime="2021-03-16T15:34:44+08:00">2021-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-Q：抽象类和接口的区别？"><a href="#1-Q：抽象类和接口的区别？" class="headerlink" title="1.Q：抽象类和接口的区别？"></a>1.Q：抽象类和接口的区别？</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/13/Day2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/12/Day1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/12/Day1/" class="post-title-link" itemprop="url">Day1 Summary</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-12 10:55:33" itemprop="dateCreated datePublished" datetime="2021-03-12T10:55:33+08:00">2021-03-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 15:31:26" itemprop="dateModified" datetime="2021-03-16T15:31:26+08:00">2021-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java知识点总结"><a href="#Java知识点总结" class="headerlink" title="Java知识点总结"></a>Java知识点总结</h1><ul>
-<li><h3 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h3><ul>
-<li><p>一旦在finally块中使用了return或throw语句，将会导致try块，catch块中的return，throw语句失效。如以下代码，输出为false。</p></li></ul></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/12/Day1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/12/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/12/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">插入图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-12 10:24:49 / 修改时间：11:40:54" itemprop="dateCreated datePublished" datetime="2021-03-12T10:24:49+08:00">2021-03-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h1><p><img src="/2021/03/12/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/test1.jpg" alt="test1"></p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f72aaad7b852">https://www.jianshu.com/p/f72aaad7b852</a> </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1052,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81LeetCode%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、LeetCode编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%A4%E6%96%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.判断相同的树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.对称二叉树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%AC%94%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">二、笔试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="nav-number">2.0.1.</span> <span class="nav-text">选择题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">2.0.2.</span> <span class="nav-text">编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">（一）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">（二）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">（三）</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
