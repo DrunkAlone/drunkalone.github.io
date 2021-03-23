@@ -304,7 +304,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-23 09:55:18 / 修改时间：11:34:48" itemprop="dateCreated datePublished" datetime="2021-03-23T09:55:18+08:00">2021-03-23</time>
+              <time title="创建时间：2021-03-23 09:55:18 / 修改时间：21:26:29" itemprop="dateCreated datePublished" datetime="2021-03-23T09:55:18+08:00">2021-03-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -384,6 +384,56 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> e1.Name <span class="keyword">as</span> Employee</span><br><span class="line"><span class="keyword">from</span> Employee <span class="keyword">as</span> e1, Employee <span class="keyword">as</span> e2</span><br><span class="line"><span class="keyword">where</span> e1.ManagerId <span class="operator">=</span> e2.Id <span class="keyword">and</span> e1.Salary <span class="operator">&gt;</span> e2.Salary;</span><br></pre></td></tr></table></figure>
 
 <p><strong>知识点：</strong>SQL语句、内连接。为同一个表建立两个副本，从而对其进行连接查询。</p>
+<h4 id="5-查找重复的电子邮箱"><a href="#5-查找重复的电子邮箱" class="headerlink" title="5.查找重复的电子邮箱"></a>5.查找重复的电子邮箱</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br><span class="line"><span class="operator">|</span> Id <span class="operator">|</span> Email   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">1</span>  <span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2</span>  <span class="operator">|</span> c<span class="variable">@d</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">3</span>  <span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br></pre></td></tr></table></figure>
+
+
+<p>根据以上输入，你的查询应返回以下结果：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span> Email   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Email</span><br><span class="line"><span class="keyword">from</span> Person</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Email</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">COUNT</span>(Email) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>SQL语句、Group By字段、COUNT聚合函数。</p>
+<ul>
+<li><p>为何使用group by语句？</p>
+<p>因为聚合函数需要和group by搭配使用，否则系统会自动加上group by null，即无论查询结果是什么，永远返回查询的第一条记录。所以对一组数据操作的函数，需要配合group by使用。</p>
+</li>
+<li><p>where和having的区别？</p>
+<p><strong>where：</strong></p>
+<p>（1）where是一个约束声明，使用where约束来自数据库的数据。</p>
+<p>（2）where是在结果返回之前起作用的。</p>
+<p>（3）where中<u>不能使用聚合函数</u>。</p>
+<p><strong>having：</strong></p>
+<p>（1）having是一个过滤声明。</p>
+<p>（2）having在查询返回结果集后，对查询结果进行过滤操作。</p>
+<p>（3）在having中<u>可以使用聚合函数</u>。</p>
+</li>
+</ul>
+<h4 id="6-颠倒二进制位"><a href="#6-颠倒二进制位" class="headerlink" title="6.颠倒二进制位"></a>6.颠倒二进制位</h4><p>颠倒给定的 32 位无符号整数的二进制位。</p>
+<p><strong>示例 ：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 00000010100101000001111010011100</span><br><span class="line">输出: 00111001011110000010100101000000</span><br><span class="line">解释: 输入的二进制串 00000010100101000001111010011100 表示无符号整数 43261596，因此返回 964176192，其二进制表示形式为00111001011110000010100101000000。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// you need treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverseBits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//res向左移一位，留出最后一个空位</span></span><br><span class="line">            res &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//获取n的最后一位，加在res的最右</span></span><br><span class="line">            res += n &amp; <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//n右移一位，舍弃最后一位</span></span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>二进制位运算。</p>
+<h4 id="7-快乐数"><a href="#7-快乐数" class="headerlink" title="7.快乐数"></a>7.快乐数</h4><p>编写一个算法来判断一个数 n 是不是快乐数。</p>
+<p>「快乐数」定义为：</p>
+<p>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。<br>如果 可以变为  1，那么这个数就是快乐数。<br>如果 n 是快乐数就返回 true ；不是，则返回 false 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">12 + 92 &#x3D; 82</span><br><span class="line">82 + 22 &#x3D; 68</span><br><span class="line">62 + 82 &#x3D; 100</span><br><span class="line">12 + 02 + 02 &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> fast = n, slow = n;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            slow = calculate(slow);</span><br><span class="line">            fast = calculate(fast);</span><br><span class="line">            fast = calculate(fast);</span><br><span class="line">        &#125;<span class="keyword">while</span>(slow != fast);</span><br><span class="line">        <span class="keyword">if</span>(slow == <span class="number">1</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m != <span class="number">0</span>)&#123;</span><br><span class="line">            sum += (m % <span class="number">10</span>) * (m % <span class="number">10</span>);</span><br><span class="line">            m = m/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点：</strong>双指针。</p>
+<p>本题使用<strong>快慢指针</strong>的思想实现，与环形链表题类似。</p>
+<p>如果给定的数字最后会一直循环重复，那么快的指针一定会追上慢的指针，二者最后会相等。</p>
+<p>而如果没有循环重复，那么最后快慢指针也会相等，并且都为1。</p>
+<p>ps：评论区的老哥总是很有才。</p>
+<p><img src="/2021/03/23/Day10/1.PNG" alt="1"></p>
 
       
     </div>
