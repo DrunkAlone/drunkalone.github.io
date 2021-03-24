@@ -163,6 +163,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Day11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DrunkAlone">
+      <meta itemprop="description" content="personal blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgiven">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/24/Day11/" class="post-title-link" itemprop="url">Day11 Summary</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-24 14:15:11 / 修改时间：17:27:39" itemprop="dateCreated datePublished" datetime="2021-03-24T14:15:11+08:00">2021-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-计数质数"><a href="#1-计数质数" class="headerlink" title="1.计数质数"></a>1.计数质数</h4><p>统计所有小于非负整数 n 的质数的数量。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/24/Day11/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/JavaDataStructure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -302,10 +377,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-23 09:55:18 / 修改时间：21:26:29" itemprop="dateCreated datePublished" datetime="2021-03-23T09:55:18+08:00">2021-03-23</time>
+              <time title="创建时间：2021-03-23 09:55:18" itemprop="dateCreated datePublished" datetime="2021-03-23T09:55:18+08:00">2021-03-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-24 14:16:46" itemprop="dateModified" datetime="2021-03-24T14:16:46+08:00">2021-03-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -329,112 +410,15 @@
       
           <p>今天的目标是刷完leetcode前190的简单题。</p>
 <p>从明天开始刷题以知识模块为主，算法题暂时一天3-5题。</p>
-<h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-扁平化嵌套列表迭代器"><a href="#1-扁平化嵌套列表迭代器" class="headerlink" title="1.扁平化嵌套列表迭代器"></a>1.扁平化嵌套列表迭代器</h4><p>给你一个嵌套的整型列表。请你设计一个迭代器，使其能够遍历这个整型列表中的所有整数。</p>
-<p>列表中的每一项或者为一个整数，或者是另一个列表。其中列表的元素也可能是整数或是其他列表。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [[1,1],2,[1,1]]</span><br><span class="line">输出: [1,1,2,1,1]</span><br><span class="line">解释: 通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,1,2,1,1]。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,[4,[6]]]</span><br><span class="line">输出: [1,4,6]</span><br><span class="line">解释: 通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,4,6]。</span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * // This is the interface that allows for creating nested lists.</span></span><br><span class="line"><span class="comment"> * // You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"> * public interface NestedInteger &#123;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     // <span class="doctag">@return</span> true if this NestedInteger holds a single integer, rather than a nested list.</span></span><br><span class="line"><span class="comment"> *     public boolean isInteger();</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     // <span class="doctag">@return</span> the single integer that this NestedInteger holds, if it holds a single integer</span></span><br><span class="line"><span class="comment"> *     // Return null if this NestedInteger holds a nested list</span></span><br><span class="line"><span class="comment"> *     public Integer getInteger();</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     // <span class="doctag">@return</span> the nested list that this NestedInteger holds, if it holds a nested list</span></span><br><span class="line"><span class="comment"> *     // Return null if this NestedInteger holds a single integer</span></span><br><span class="line"><span class="comment"> *     public List&lt;NestedInteger&gt; getList();</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NestedIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; list;</span><br><span class="line">    <span class="keyword">private</span> Iterator&lt;Integer&gt; iterator;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(List&lt;NestedInteger&gt; nestedList)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(NestedInteger nest : nestedList)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nest.isInteger())&#123;</span><br><span class="line">                list.add(nest.getInteger());</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                add(nest.getList());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NestedIterator</span><span class="params">(List&lt;NestedInteger&gt; nestedList)</span> </span>&#123;</span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        add(nestedList);</span><br><span class="line">        iterator = list.iterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> iterator.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> iterator.hasNext();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NestedIterator object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * NestedIterator i = new NestedIterator(nestedList);</span></span><br><span class="line"><span class="comment"> * while (i.hasNext()) v[f()] = i.next();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>NestedList嵌套列表、深度优先搜索、iterator迭代器。</p>
-<p>嵌套的整数列表是一个树形结构，树上的叶子节点对应一个整数，非叶子节点对应一个列表。因而本题转化为树的深度优先搜索。</p>
-<p>先遍历整个嵌套列表，将整数存入一个数组：遇到纯数则直接加入数组，否则继续遍历其内嵌套的列表。遍历列表完成后，遍历生成的纯数数组从而实现next()和hasNext()方法。</p>
-<h4 id="2-组合两个表"><a href="#2-组合两个表" class="headerlink" title="2.组合两个表"></a>2.组合两个表</h4><p><strong>表1: Person</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line"><span class="operator">|</span> 列名         <span class="operator">|</span> 类型     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line"><span class="operator">|</span> PersonId    <span class="operator">|</span> <span class="type">int</span>     <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> FirstName   <span class="operator">|</span> <span class="type">varchar</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> LastName    <span class="operator">|</span> <span class="type">varchar</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line">PersonId 是上表主键</span><br></pre></td></tr></table></figure>
-
-<p><strong>表2: Address</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line"><span class="operator">|</span> 列名         <span class="operator">|</span> 类型    <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line"><span class="operator">|</span> AddressId   <span class="operator">|</span> <span class="type">int</span>     <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> PersonId    <span class="operator">|</span> <span class="type">int</span>     <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> City        <span class="operator">|</span> <span class="type">varchar</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> State       <span class="operator">|</span> <span class="type">varchar</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+---------+</span></span><br><span class="line">AddressId 是上表主键</span><br></pre></td></tr></table></figure>
-
-
-<p>编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FirstName, LastName, City, State</span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> FirstName, LastName, City, State</span><br><span class="line"><span class="keyword">from</span> Person <span class="keyword">left</span> <span class="keyword">join</span> Address</span><br><span class="line"><span class="keyword">on</span> Person.PersonId <span class="operator">=</span> Address.PersonId;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>SQL语句、外连接查询。</p>
-<p>因为表 Address 中的 personId 是表 Person 的<strong>外关键字</strong>，所以我们可以连接这两个表来获取一个人的地址信息。</p>
-<p>考虑到可能不是每个人都有地址信息，我们应该使用 <code>outer join</code> 而不是默认的 inner join。</p>
-<p><strong>Q：</strong>为什么不使用where？</p>
-<p><strong>A：</strong>因为where的本质是过滤。题目要求无论是否有地址信息都需要获取结果，即无论地址是否为null，都要返回firstname和lastname，而使用where会直接过滤掉地址为null的查询结果。</p>
-<h4 id="3-第二高的薪水"><a href="#3-第二高的薪水" class="headerlink" title="3.第二高的薪水"></a>3.第二高的薪水</h4><p>编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">----+--------+</span></span><br><span class="line"><span class="operator">|</span> Id <span class="operator">|</span> Salary <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+--------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">1</span>  <span class="operator">|</span> <span class="number">100</span>    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2</span>  <span class="operator">|</span> <span class="number">200</span>    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">3</span>  <span class="operator">|</span> <span class="number">300</span>    <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+--------+</span></span><br></pre></td></tr></table></figure>
-
-<p>例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br><span class="line"><span class="operator">|</span> SecondHighestSalary <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">200</span>                 <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">第一种：两层筛选，将空值变为null输出。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">   (</span><br><span class="line">       <span class="keyword">select</span> <span class="keyword">distinct</span> Salary</span><br><span class="line">       <span class="keyword">from</span> Employee</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">DESC</span></span><br><span class="line">       limit <span class="number">1</span>,<span class="number">1</span></span><br><span class="line">   )</span><br><span class="line"><span class="keyword">as</span> <span class="string">&#x27;SecondHighestSalary&#x27;</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">第二种：同样两层筛选，调用ifnull函数，时间复杂度更低。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">ifnull</span><br><span class="line">(</span><br><span class="line">   (</span><br><span class="line">       <span class="keyword">select</span> <span class="keyword">distinct</span> Salary</span><br><span class="line">       <span class="keyword">from</span> Employee</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">DESC</span></span><br><span class="line">       limit <span class="number">1</span>,<span class="number">1</span></span><br><span class="line">   )</span><br><span class="line">)<span class="keyword">as</span> <span class="string">&#x27;SecondHighestSalary&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>SQL语句。</p>
-<p>（1）ifnull(x, y)：若x不为空则返回x，否则返回y，本题令y = null；</p>
-<p>（2）limit x, y：从查询结果的索引值x开始（索引值初始为0），获取共y个返回值。</p>
-<p>（3）distinct：去重。</p>
-<h4 id="4-超过经理收入的员工"><a href="#4-超过经理收入的员工" class="headerlink" title="4.超过经理收入的员工"></a>4.超过经理收入的员工</h4><p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">----+-------+--------+-----------+</span></span><br><span class="line"><span class="operator">|</span> Id <span class="operator">|</span> Name  <span class="operator">|</span> Salary <span class="operator">|</span> ManagerId <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+-------+--------+-----------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">1</span>  <span class="operator">|</span> Joe   <span class="operator">|</span> <span class="number">70000</span>  <span class="operator">|</span> <span class="number">3</span>         <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2</span>  <span class="operator">|</span> Henry <span class="operator">|</span> <span class="number">80000</span>  <span class="operator">|</span> <span class="number">4</span>         <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">3</span>  <span class="operator">|</span> Sam   <span class="operator">|</span> <span class="number">60000</span>  <span class="operator">|</span> <span class="keyword">NULL</span>      <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">4</span>  <span class="operator">|</span> Max   <span class="operator">|</span> <span class="number">90000</span>  <span class="operator">|</span> <span class="keyword">NULL</span>      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+-------+--------+-----------+</span></span><br></pre></td></tr></table></figure>
-
-<p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br><span class="line"><span class="operator">|</span> Employee <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br><span class="line"><span class="operator">|</span> Joe      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> e1.Name <span class="keyword">as</span> Employee</span><br><span class="line"><span class="keyword">from</span> Employee <span class="keyword">as</span> e1, Employee <span class="keyword">as</span> e2</span><br><span class="line"><span class="keyword">where</span> e1.ManagerId <span class="operator">=</span> e2.Id <span class="keyword">and</span> e1.Salary <span class="operator">&gt;</span> e2.Salary;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>SQL语句、内连接。为同一个表建立两个副本，从而对其进行连接查询。</p>
-<h4 id="5-查找重复的电子邮箱"><a href="#5-查找重复的电子邮箱" class="headerlink" title="5.查找重复的电子邮箱"></a>5.查找重复的电子邮箱</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br><span class="line"><span class="operator">|</span> Id <span class="operator">|</span> Email   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">1</span>  <span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2</span>  <span class="operator">|</span> c<span class="variable">@d</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">3</span>  <span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----+---------+</span></span><br></pre></td></tr></table></figure>
-
-
-<p>根据以上输入，你的查询应返回以下结果：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span> Email   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span> a<span class="variable">@b</span>.com <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Email</span><br><span class="line"><span class="keyword">from</span> Person</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Email</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">COUNT</span>(Email) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>SQL语句、Group By字段、COUNT聚合函数。</p>
-<ul>
-<li><p>为何使用group by语句？</p>
-<p>因为聚合函数需要和group by搭配使用，否则系统会自动加上group by null，即无论查询结果是什么，永远返回查询的第一条记录。所以对一组数据操作的函数，需要配合group by使用。</p>
-</li>
-<li><p>where和having的区别？</p>
-<p><strong>where：</strong></p>
-<p>（1）where是一个约束声明，使用where约束来自数据库的数据。</p>
-<p>（2）where是在结果返回之前起作用的。</p>
-<p>（3）where中<u>不能使用聚合函数</u>。</p>
-<p><strong>having：</strong></p>
-<p>（1）having是一个过滤声明。</p>
-<p>（2）having在查询返回结果集后，对查询结果进行过滤操作。</p>
-<p>（3）在having中<u>可以使用聚合函数</u>。</p>
-</li>
-</ul>
-<h4 id="6-颠倒二进制位"><a href="#6-颠倒二进制位" class="headerlink" title="6.颠倒二进制位"></a>6.颠倒二进制位</h4><p>颠倒给定的 32 位无符号整数的二进制位。</p>
-<p><strong>示例 ：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 00000010100101000001111010011100</span><br><span class="line">输出: 00111001011110000010100101000000</span><br><span class="line">解释: 输入的二进制串 00000010100101000001111010011100 表示无符号整数 43261596，因此返回 964176192，其二进制表示形式为00111001011110000010100101000000。</span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// you need treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverseBits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//res向左移一位，留出最后一个空位</span></span><br><span class="line">            res &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//获取n的最后一位，加在res的最右</span></span><br><span class="line">            res += n &amp; <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//n右移一位，舍弃最后一位</span></span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>二进制位运算。</p>
-<h4 id="7-快乐数"><a href="#7-快乐数" class="headerlink" title="7.快乐数"></a>7.快乐数</h4><p>编写一个算法来判断一个数 n 是不是快乐数。</p>
-<p>「快乐数」定义为：</p>
-<p>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。<br>然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。<br>如果 可以变为  1，那么这个数就是快乐数。<br>如果 n 是快乐数就返回 true ；不是，则返回 false 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">12 + 92 &#x3D; 82</span><br><span class="line">82 + 22 &#x3D; 68</span><br><span class="line">62 + 82 &#x3D; 100</span><br><span class="line">12 + 02 + 02 &#x3D; 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> fast = n, slow = n;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            slow = calculate(slow);</span><br><span class="line">            fast = calculate(fast);</span><br><span class="line">            fast = calculate(fast);</span><br><span class="line">        &#125;<span class="keyword">while</span>(slow != fast);</span><br><span class="line">        <span class="keyword">if</span>(slow == <span class="number">1</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m != <span class="number">0</span>)&#123;</span><br><span class="line">            sum += (m % <span class="number">10</span>) * (m % <span class="number">10</span>);</span><br><span class="line">            m = m/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>双指针。</p>
-<p>本题使用<strong>快慢指针</strong>的思想实现，与环形链表题类似。</p>
-<p>如果给定的数字最后会一直循环重复，那么快的指针一定会追上慢的指针，二者最后会相等。</p>
-<p>而如果没有循环重复，那么最后快慢指针也会相等，并且都为1。</p>
-<p>ps：评论区的老哥总是很有才。</p>
-<p><img src="/2021/03/23/Day10/1.PNG" alt="1"></p>
-
+<h2 id="一、LeetCode编程题"><a href="#一、LeetCode编程题" class="headerlink" title="一、LeetCode编程题"></a>一、LeetCode编程题</h2><h4 id="1-扁平化嵌套列表迭代器"><a href="#1-扁平化嵌套列表迭代器" class="headerlink" title="1.扁平化嵌套列表迭代器"></a>1.扁平化嵌套列表迭代器</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/23/Day10/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -929,86 +913,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/dynamic-programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DrunkAlone">
-      <meta itemprop="description" content="personal blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgiven">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/16/dynamic-programming/" class="post-title-link" itemprop="url">动态规划dynamic programming</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-16 20:19:02 / 修改时间：21:03:20" itemprop="dateCreated datePublished" datetime="2021-03-16T20:19:02+08:00">2021-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%93%E9%A2%98%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">专题知识点</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><h2 id="什么是动态规划？"><a href="#什么是动态规划？" class="headerlink" title="什么是动态规划？"></a>什么是动态规划？</h2><p>动态规划（Dynamic Programming）是一种分阶段求解决策略的数学思想。大事化小，小事化了。</p></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/dynamic-programming/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1074,7 +982,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1087,7 +995,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
