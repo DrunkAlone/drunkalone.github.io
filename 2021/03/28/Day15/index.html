@@ -28,7 +28,7 @@
 <meta property="og:description" content="本日知识点：规范化输出、字节跳动真题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-28T07:28:27.000Z">
-<meta property="article:modified_time" content="2021-03-28T13:52:53.576Z">
+<meta property="article:modified_time" content="2021-03-29T02:06:38.754Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="真题">
@@ -190,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-28 15:28:27 / 修改时间：21:52:53" itemprop="dateCreated datePublished" datetime="2021-03-28T15:28:27+08:00">2021-03-28</time>
+              <time title="创建时间：2021-03-28 15:28:27" itemprop="dateCreated datePublished" datetime="2021-03-28T15:28:27+08:00">2021-03-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-29 10:06:38" itemprop="dateModified" datetime="2021-03-29T10:06:38+08:00">2021-03-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,7 +243,7 @@
 <p><strong>知识点：</strong>String.format()规范化输出。</p>
 <h2 id="二、笔试总结"><a href="#二、笔试总结" class="headerlink" title="二、笔试总结"></a>二、笔试总结</h2><p>刚刚做了字节的笔试，发现自己简直是啥都不会，一道题都没做出来…</p>
 <p>确实是比较有难度，总之先记录在此。</p>
-<h4 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a><strong>第一题</strong></h4><p>给你一个数组interviews，其中interviews[i] = [startTime, endTime]，表示面试开始于startTime点，结束于endTime点。注意，每家公司都整点开始，整点结束，一旦参加某次面试需要全程参与。请返回你最多可以参与的面试场数。</p>
+<h4 id="第一题（10分）"><a href="#第一题（10分）" class="headerlink" title="第一题（10分）"></a><strong>第一题</strong>（10分）</h4><p>给你一个数组interviews，其中interviews[i] = [startTime, endTime]，表示面试开始于startTime点，结束于endTime点。注意，每家公司都整点开始，整点结束，一旦参加某次面试需要全程参与。请返回你最多可以参与的面试场数。</p>
 <p><strong>输入描述：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一行是总面试场数N，为一个整型</span><br><span class="line">后面N行都是两个整型，startTime endTime</span><br><span class="line">0&lt;&#x3D;N&lt;&#x3D;100</span><br><span class="line">0&lt;&#x3D;startTime&lt;&#x3D;24</span><br><span class="line">0&lt;&#x3D;endTime&lt;&#x3D;24</span><br></pre></td></tr></table></figure>
 
@@ -249,8 +255,16 @@
 
 <p><strong>思考：</strong></p>
 <p>本题考察点应该类似于求最大区间、公共区间一类问题。想了很久，没什么思路。</p>
+<p><font color="blue" size="4"><strong>&lt;- - - - - - - - - - 更新于2021/03/29 - - - - - - - - - - - -&gt;</strong></font></p>
+<p>查了一下关键字，本题的核心考点是“求最大不相交区间”。使用贪心算法，逐步求得区域化最优解。</p>
+<p><strong>基本思路：</strong></p>
+<p>（1）设每个区间的端点为[a, b]，按照右端点从小到大排序；</p>
+<p>（2）第一个区间必选。如果a1&gt;a2则说明此时区间2包含区间1，则不选区间2，随后选择后一个区间与区间1比较，直到a1&lt;=an。考虑相交问题时选择前一个区间。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Area</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">		<span class="keyword">int</span> b;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = scan.nextInt();</span><br><span class="line">		Area ar[] = <span class="keyword">new</span> Area[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			ar[i] = <span class="keyword">new</span> Area();</span><br><span class="line">			ar[i].a = scan.nextInt();</span><br><span class="line">			ar[i].b = scan.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//要么继承Comparable接口，要么直接调用Comparator类</span></span><br><span class="line">        <span class="comment">//对象数组的属性值比较</span></span><br><span class="line">		Arrays.sort(ar, <span class="keyword">new</span> Comparator&lt;Area&gt;() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Area ar1, Area ar2)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> ar1.b - ar2.b;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="comment">//当后区间的左端点大于前区间的右端点，说明已经不相交</span></span><br><span class="line">            <span class="comment">//不相交则结果+1</span></span><br><span class="line">			<span class="keyword">if</span>(ar[i].a &gt;= ar[j].b) &#123;</span><br><span class="line">				count++;</span><br><span class="line">				j = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题还算是贪心算法的初级难度，我梳理了老半天也没完全理解，看代码才勉勉强强有点头绪了。</p>
 <hr>
-<h4 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h4><p>对于一个数组，找出其中数最大的和，要求这些数字不能相邻。（题干废话很多，提取重点内核差不多如此）</p>
+<h4 id="第二题（30分）"><a href="#第二题（30分）" class="headerlink" title="第二题（30分）"></a>第二题（30分）</h4><p>对于一个数组，找出其中数最大的和，要求这些数字不能相邻。（题干废话很多，提取重点内核差不多如此）</p>
 <p><strong>输入描述：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3,1]</span><br><span class="line">数据量范围在1~200之间</span><br></pre></td></tr></table></figure>
 
@@ -272,7 +286,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> []arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">200</span>];</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(scan.hasNext())&#123;</span><br><span class="line">            arr[count] = scan.nextInt();</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        count--;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= count - <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>((arr[i] + arr[i + <span class="number">2</span>]) &gt; (arr[i + <span class="number">1</span>] + arr[i + <span class="number">3</span>]) &amp;&amp; (arr[i] + arr[i + <span class="number">2</span>]) &gt; (arr[i] + arr[i + <span class="number">3</span>]))&#123;</span><br><span class="line">                sum += arr[i] + arr[i + <span class="number">2</span>];</span><br><span class="line">                i+=<span class="number">4</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sum += Math.max(arr[i + <span class="number">1</span>] + arr[i + <span class="number">3</span>], arr[i] + arr[i + <span class="number">3</span>]);</span><br><span class="line">                i+=<span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i == count)sum += arr[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(i == count - <span class="number">1</span>)sum += Math.max(arr[count - <span class="number">1</span>], arr[count]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(i == count - <span class="number">2</span>)sum += Math.max(arr[count] + arr[count - <span class="number">2</span>], arr[count - <span class="number">1</span>]);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h4><p>小明手中有n根铁棒，他想从中找出三根，用它们合成一个“优美指数”最高的三角形。</p>
+<h4 id="第三题（30分）"><a href="#第三题（30分）" class="headerlink" title="第三题（30分）"></a>第三题（30分）</h4><p>小明手中有n根铁棒，他想从中找出三根，用它们合成一个“优美指数”最高的三角形。</p>
 <p>设一个三角形的三边为a，b，c，定义“优美指数”为|a-b|+|a-c|+|b-c|。</p>
 <p>注意，额外设定等腰三角形的优美指数为0。</p>
 <p><strong>输入描述：</strong></p>
@@ -287,7 +301,7 @@
 <p><strong>思考：</strong></p>
 <p>本题属实没什么思路，初步思想是对数组进行排序，再通过指针或二分法逐步获得满足a+b = c的一组数据，再从其中得到优美指数最高的数。然而在研究了一番给出的测试用例之后，并没有发现合适的应用规律。</p>
 <hr>
-<h4 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h4><p>本题类似于走棋盘，在n×m的范围内向右或向下移动，直到从棋盘左上角走到右下角。给出一些障碍点，在前进的过程中需要绕开这些障碍点，问有多少种走法。</p>
+<h4 id="第四题（30分）"><a href="#第四题（30分）" class="headerlink" title="第四题（30分）"></a>第四题（30分）</h4><p>本题类似于走棋盘，在n×m的范围内向右或向下移动，直到从棋盘左上角走到右下角。给出一些障碍点，在前进的过程中需要绕开这些障碍点，问有多少种走法。</p>
 
     </div>
 
@@ -310,7 +324,10 @@
     <a href="/2021/03/27/Day14/" rel="prev" title="Day14 Summary">
       <i class="fa fa-chevron-left"></i> Day14 Summary
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/29/Day16/" rel="next" title="Day16 Summary">
+      Day16 Summary <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -369,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81nowCoder%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、nowCoder编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%88%97%E7%9A%84%E5%92%8C"><span class="nav-number">1.0.1.</span> <span class="nav-text">数列的和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%AC%94%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">二、笔试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98"><span class="nav-number">2.0.1.</span> <span class="nav-text">第一题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-number">2.0.2.</span> <span class="nav-text">第二题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98"><span class="nav-number">2.0.3.</span> <span class="nav-text">第三题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98"><span class="nav-number">2.0.4.</span> <span class="nav-text">第四题</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81nowCoder%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、nowCoder编程题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%88%97%E7%9A%84%E5%92%8C"><span class="nav-number">1.0.1.</span> <span class="nav-text">数列的和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%AC%94%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">二、笔试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="nav-number">2.0.1.</span> <span class="nav-text">第一题（10分）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%8830%E5%88%86%EF%BC%89"><span class="nav-number">2.0.2.</span> <span class="nav-text">第二题（30分）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%8830%E5%88%86%EF%BC%89"><span class="nav-number">2.0.3.</span> <span class="nav-text">第三题（30分）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98%EF%BC%8830%E5%88%86%EF%BC%89"><span class="nav-number">2.0.4.</span> <span class="nav-text">第四题（30分）</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
