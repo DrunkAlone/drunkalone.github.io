@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="近期学习计划 每日刷题：LeetCode编程题+nowcoder客观题 毕业设计：查阅外国文献+相似系统案例  练习hexo基本功能tag插件 引用块  1234&amp;#123;% blockquote %&amp;#125;So we beats on,boats against the current,borne back ceaselessly into the past.于是我们奋力向前划，逆流而上的">
+  <meta name="description" content="本篇主要内容：List和Set等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇blog——学习计划">
-<meta property="og:url" content="http://example.com/2021/03/12/%E7%AC%AC%E4%B8%80%E7%AF%87blog%E2%80%94%E2%80%94%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:title" content="Java面试题之集合类总结（二）">
+<meta property="og:url" content="http://example.com/2021/04/07/java-interview-collection2/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="近期学习计划 每日刷题：LeetCode编程题+nowcoder客观题 毕业设计：查阅外国文献+相似系统案例  练习hexo基本功能tag插件 引用块  1234&amp;#123;% blockquote %&amp;#125;So we beats on,boats against the current,borne back ceaselessly into the past.于是我们奋力向前划，逆流而上的">
+<meta property="og:description" content="本篇主要内容：List和Set等。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-12T01:08:11.000Z">
-<meta property="article:modified_time" content="2021-04-07T06:37:06.082Z">
+<meta property="article:published_time" content="2021-04-07T07:18:47.000Z">
+<meta property="article:modified_time" content="2021-04-07T08:05:26.299Z">
 <meta property="article:author" content="DrunkAlone">
-<meta property="article:tag" content="schedule">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/03/12/%E7%AC%AC%E4%B8%80%E7%AF%87blog%E2%80%94%E2%80%94%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+<link rel="canonical" href="http://example.com/2021/04/07/java-interview-collection2/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>第一篇blog——学习计划 | Forgiven</title>
+  <title>Java面试题之集合类总结（二） | Forgiven</title>
   
 
 
@@ -167,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/12/%E7%AC%AC%E4%B8%80%E7%AF%87blog%E2%80%94%E2%80%94%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/java-interview-collection2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          第一篇blog——学习计划
+          Java面试题之集合类总结（二）
         </h1>
 
         <div class="post-meta">
@@ -189,16 +190,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-12 09:08:11" itemprop="dateCreated datePublished" datetime="2021-03-12T09:08:11+08:00">2021-03-12</time>
+              <time title="创建时间：2021-04-07 15:18:47 / 修改时间：16:05:26" itemprop="dateCreated datePublished" datetime="2021-04-07T15:18:47+08:00">2021-04-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-07 14:37:06" itemprop="dateModified" datetime="2021-04-07T14:37:06+08:00">2021-04-07</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
+                </span>
+            </span>
 
           
 
@@ -211,36 +215,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="近期学习计划"><a href="#近期学习计划" class="headerlink" title="近期学习计划"></a>近期学习计划</h1><ul>
-<li>每日刷题：LeetCode编程题+nowcoder客观题</li>
-<li>毕业设计：查阅外国文献+相似系统案例</li>
+        <p>本篇主要内容：List和Set等。</p>
+<span id="more"></span>
+
+<h3 id="本篇导读"><a href="#本篇导读" class="headerlink" title="本篇导读"></a>本篇导读</h3><ul>
+<li><font face="等线">1.Collection和Collections的区别</font></li>
+<li><font face="等线">2.如何遍历List？</font></li>
+<li><font face="等线">List和数组间的转换？</font></li>
+<li><font face="等线">4.hashCode()和equals()</font></li>
+<li><font face="等线">5.ArrayList基本方法实现</font></li>
+<li><font face="等线">6.LinkedList基本方法实现</font></li>
 </ul>
-<h1 id="练习hexo基本功能"><a href="#练习hexo基本功能" class="headerlink" title="练习hexo基本功能"></a>练习hexo基本功能</h1><h2 id="tag插件"><a href="#tag插件" class="headerlink" title="tag插件"></a>tag插件</h2><ul>
-<li>引用块</li>
+<h3 id="1-Collection和Collections的区别"><a href="#1-Collection和Collections的区别" class="headerlink" title="1.Collection和Collections的区别"></a>1.Collection和Collections的区别</h3><ul>
+<li>Collection是单列集合的顶层接口。</li>
+<li>Collections是一个集合的工具类，提供了排序、查找等操作集合的常用方法。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote %&#125;</span><br><span class="line">So we beats on,boats against the current,borne back ceaselessly into the past.</span><br><span class="line">于是我们奋力向前划，逆流而上的小舟不断倒退，回到过去。</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote><p>So we beats on,boats against the current,borne back ceaselessly into the past.<br>于是我们奋力向前划，逆流而上的小舟不断倒退，回到过去。</p>
-</blockquote>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</span><br><span class="line">Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote><p>So we beats on,boats against the current,borne back ceaselessly into the past.</p>
-<footer><strong>Francis ScottKey Fitzgerald</strong><cite>The Great Gatsby</cite></footer></blockquote>
-
-<ul>
-<li>代码块</li>
+<h3 id="2-如何遍历List？"><a href="#2-如何遍历List？" class="headerlink" title="2.如何遍历List？"></a>2.如何遍历List？</h3><p>（1）for循环基于计数器遍历；</p>
+<p>（2）iterator迭代器遍历；</p>
+<p>（3）forEach循环遍历，内部采用iterator实现。</p>
+<h3 id="3-List和数组间的转换？"><a href="#3-List和数组间的转换？" class="headerlink" title="3.List和数组间的转换？"></a>3.List和数组间的转换？</h3><ul>
+<li>数组转List：Arrays.asList(array)；</li>
+<li>List转数组：List自带的toArray()方法。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock %&#125;</span><br><span class="line">alert(&#39;Hello World!&#39;);</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;Hello World!&#39;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock lang:objc %&#125;</span><br><span class="line">[rectangle setX: 10 y: 10 width: 20 height: 20];</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</span><br></pre></td></tr></table></figure>
-
-<p>🐎一下这个网站，干货很多：</p>
-<p><a target="_blank" rel="noopener" href="https://www.javanav.com/">https://www.javanav.com/</a></p>
+<h3 id="4-hashCode-和equals"><a href="#4-hashCode-和equals" class="headerlink" title="4.hashCode()和equals()"></a>4.hashCode()和equals()</h3><ul>
+<li>如果两个对象equals，那么它们的hashCode值一定相等；</li>
+<li>如果两个对象hashCode值相等，它们不一定equals，即碰撞。</li>
+<li>当equals方法被重写，hashCode方法也应被重写。</li>
+</ul>
+<h3 id="5-ArrayList基本方法实现"><a href="#5-ArrayList基本方法实现" class="headerlink" title="5.ArrayList基本方法实现"></a>5.ArrayList基本方法实现</h3><ul>
+<li><p><strong>查询<em>get(int index)</em></strong></p>
+<p>（1）判断下标是否越界；</p>
+<p>（2）通过下标从数组返回元素。</p>
+</li>
+<li><p><strong>顺序添加<em>add(Object object)</em></strong></p>
+<p>（1）通过扩容机制判断原数组是否还有空间，若没有则实例化更大的新数组，把旧数组数据拷贝至新数组；</p>
+<p>（2）添加数组的最后一位元素。</p>
+</li>
+<li><p><strong>中间插入<em>add(int index, Object object)</em></strong></p>
+<p>（1）判断下表是否越界；</p>
+<p>（2）扩容；</p>
+<p>（3）通过复制数组的方式将指定下标后的全部元素后移一位；</p>
+<p>（4）替换指定下标的旧元素。</p>
+</li>
+</ul>
+<h3 id="6-LinkedList基本方法实现"><a href="#6-LinkedList基本方法实现" class="headerlink" title="6.LinkedList基本方法实现"></a>6.LinkedList基本方法实现</h3><ul>
+<li><p><strong>查询<em>get(int index)</em></strong></p>
+<p>（1）判断元素更靠近头部还是尾部；</p>
+<p>（2）若靠近头部，从头部开始依次查询判断。</p>
+</li>
+<li><p><strong>插入元素</strong></p>
+<p>（1）判断元素在链表尾部还是中间；</p>
+<p>（2）若在链表尾部添加，直接将尾节点的下一个指针指向新增节点；</p>
+<p>若在链表中间添加，先判断插入位置是否为首节点，如是则将首节点的上一个指针指向新增节点，否则采用中间插入的方法。</p>
+</li>
+</ul>
 
     </div>
 
@@ -250,7 +278,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/schedule/" rel="tag"># schedule</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># 面试题</a>
           </div>
 
         
@@ -259,13 +288,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/11/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2021/04/06/Day20/" rel="prev" title="Day20 Summary">
+      <i class="fa fa-chevron-left"></i> Day20 Summary
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/12/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" rel="next" title="插入图片">
-      插入图片 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -324,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">近期学习计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0hexo%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">练习hexo基本功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tag%E6%8F%92%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">tag插件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">本篇导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Collection%E5%92%8CCollections%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">1.Collection和Collections的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E9%81%8D%E5%8E%86List%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">2.如何遍历List？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List%E5%92%8C%E6%95%B0%E7%BB%84%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">3.List和数组间的转换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-hashCode-%E5%92%8Cequals"><span class="nav-number">5.</span> <span class="nav-text">4.hashCode()和equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ArrayList%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.</span> <span class="nav-text">5.ArrayList基本方法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-LinkedList%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.</span> <span class="nav-text">6.LinkedList基本方法实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
