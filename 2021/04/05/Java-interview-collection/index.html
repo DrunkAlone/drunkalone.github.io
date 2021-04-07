@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="集合类专题讲解+常见面试题汇总。">
+  <meta name="description" content="集合类专题讲解+常见面试题汇总。 本篇主要内容：常见集合及Map相关。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java面试题之集合类总结">
+<meta property="og:title" content="Java面试题之集合类总结（一）">
 <meta property="og:url" content="http://example.com/2021/04/05/Java-interview-collection/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="集合类专题讲解+常见面试题汇总。">
+<meta property="og:description" content="集合类专题讲解+常见面试题汇总。 本篇主要内容：常见集合及Map相关。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/04/05/Java-interview-collection/a.png">
 <meta property="og:image" content="http://example.com/2021/04/05/Java-interview-collection/b.png">
 <meta property="article:published_time" content="2021-04-05T11:21:53.000Z">
-<meta property="article:modified_time" content="2021-04-06T09:51:04.323Z">
+<meta property="article:modified_time" content="2021-04-07T07:14:42.048Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>Java面试题之集合类总结 | Forgiven</title>
+  <title>Java面试题之集合类总结（一） | Forgiven</title>
   
 
 
@@ -184,7 +184,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java面试题之集合类总结
+          Java面试题之集合类总结（一）
         </h1>
 
         <div class="post-meta">
@@ -201,8 +201,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-06 17:51:04" itemprop="dateModified" datetime="2021-04-06T17:51:04+08:00">2021-04-06</time>
+                <time title="修改时间：2021-04-07 15:14:42" itemprop="dateModified" datetime="2021-04-07T15:14:42+08:00">2021-04-07</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
+                </span>
+            </span>
 
           
 
@@ -216,6 +225,7 @@
 
       
         <p>集合类专题讲解+常见面试题汇总。</p>
+<p>本篇主要内容：常见集合及Map相关。</p>
 <span id="more"></span>
 
 <p><img src="/2021/04/05/Java-interview-collection/a.png" alt="a"></p>
@@ -228,15 +238,15 @@
 <li><strong>算法：</strong>实现集合接口的对象里所执行的计算，如搜索和排序。</li>
 </ul>
 <p>集合框架的优点：降低开发及维护成本，代码质量得到保障，增强复用性和可操作性。</p>
-<h2 id="常见面试题总结"><a href="#常见面试题总结" class="headerlink" title="常见面试题总结"></a>常见面试题总结</h2><p><font size="6" color="pink">◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇</font></p>
-<h3 id="1-有哪些常见的集合？"><a href="#1-有哪些常见的集合？" class="headerlink" title="1.有哪些常见的集合？"></a>1.有哪些常见的集合？</h3><p>（1）常见的集合有：</p>
-<p><font size="5"><strong>Collection</strong></font><br><font size="4"><strong>├List</strong></font><br><strong>│├LinkedList</strong><br><strong>│├ArrayList</strong><br><strong>│└Vector</strong><br><strong>│　└Stack</strong><br><font size="4"><strong>├Set</strong></font><br><strong>│├HashSet</strong><br><strong>│├TreeSet</strong></p>
+<p>关于Iterator迭代器：迭代器并不是一个集合，它是一种用于访问集合的方法，为各类容器提供公共接口，可用于迭代ArrayList和HashSet等集合。</p>
+<h3 id="1-有哪些常见的集合？"><a href="#1-有哪些常见的集合？" class="headerlink" title="1.有哪些常见的集合？"></a>1.有哪些常见的集合？</h3><p>（一）常见的集合有：</p>
+<p><font size="5"><strong>Collection</strong></font><br><font size="4"><strong>├List</strong></font><br><strong>│├LinkedList</strong><br><strong>│├ArrayList</strong><br><strong>│└Vector</strong><br><strong>│　└Stack</strong><br><font size="4"><strong>├Set</strong></font><br><strong>│├HashSet</strong><br><strong>│└TreeSet</strong></p>
 <p><font size="5"><strong>Map</strong></font><br><font size="4"><strong>├Hashtable</strong></font><br><font size="4"><strong>├HashMap</strong></font><br><font size="4"><strong>└WeakHashMap</strong></font></p>
 <p>Collection是集合层级的根接口，Java平台不提供该接口的直接实现。</p>
 <p>Set是一个不能包含重复元素的集合。</p>
 <p>List是一个有序集合，可以包含重复元素。能够通过它的索引来访问任何元素，更像长度动态变换的数组。</p>
 <p>Map是一个键值对映射对象。</p>
-<p>（2）各类特点：</p>
+<p>（二）各类特点：</p>
 <p>​    <font size="5" color="brown"><strong>LIST</strong></font></p>
 <table>
 <thead>
@@ -274,82 +284,253 @@
 <td>默认扩展一倍容量</td>
 </tr>
 </tbody></table>
+<p>常用方法：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>add(Object element)</em></td>
+<td align="center">向列表尾部添加指定元素</td>
+</tr>
+<tr>
+<td align="center"><em>size()</em></td>
+<td align="center">返回元素个数</td>
+</tr>
+<tr>
+<td align="center"><em>get(int index)</em></td>
+<td align="center">返回列表中指定位置的元素</td>
+</tr>
+<tr>
+<td align="center"><em>add(int index, Object element)</em></td>
+<td align="center">在指定位置插入指定元素</td>
+</tr>
+<tr>
+<td align="center"><em>set(int i, Object element)</em></td>
+<td align="center">将位置i元素替换为指定元素，并返回被替换的元素</td>
+</tr>
+<tr>
+<td align="center"><em>clear()</em></td>
+<td align="center">移除所有元素</td>
+</tr>
+<tr>
+<td align="center"><em>isEmpty()</em></td>
+<td align="center">判断列表是否包含元素</td>
+</tr>
+<tr>
+<td align="center"><em>contains()</em></td>
+<td align="center">判断列表是否包含指定元素</td>
+</tr>
+<tr>
+<td align="center"><em>remove(int index)/remove(Object o)</em></td>
+<td align="center">移除列表指定位置元素并返回被删元素/移除第一次出现的指定元素并返回true或false</td>
+</tr>
+<tr>
+<td align="center"><em>iterator()</em></td>
+<td align="center">返回按适当顺序在列表元素上迭代的迭代器</td>
+</tr>
+</tbody></table>
 <p>​    <font size="5" color="brown"><strong>SET</strong></font></p>
 <table>
 <thead>
 <tr>
-<th>类名</th>
-<th>顺序及可重复</th>
-<th>底层实现</th>
-<th>存储特点</th>
-<th>备注</th>
+<th align="center">类名</th>
+<th align="center">顺序及可重复</th>
+<th align="center">底层实现</th>
+<th align="center">存储特点</th>
+<th align="center">备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>HashSet</td>
-<td>无序不可重复</td>
-<td>Hash表</td>
-<td>存取速度快</td>
-<td>内部是HashMap</td>
+<td align="center">HashSet</td>
+<td align="center">无序不可重复</td>
+<td align="center">Hash表</td>
+<td align="center">存取速度快</td>
+<td align="center">内部是HashMap，允许插入null值</td>
 </tr>
 <tr>
-<td>TreeSet</td>
-<td>无序不可重复</td>
-<td>二叉树</td>
-<td>排序存储</td>
-<td>内部是TreeMap的SortedSet</td>
+<td align="center">TreeSet</td>
+<td align="center">无序不可重复</td>
+<td align="center">二叉树</td>
+<td align="center">排序存储</td>
+<td align="center">内部是TreeMap的SortedSet</td>
 </tr>
 <tr>
-<td>LinkedHashSet</td>
-<td>有序不可重复</td>
-<td>Hash表，用双向链表记录插入顺序</td>
-<td>\</td>
-<td>内部是LinkedHashMap</td>
+<td align="center">LinkedHashSet</td>
+<td align="center">有序不可重复</td>
+<td align="center">Hash表，用双向链表记录插入顺序</td>
+<td align="center">\</td>
+<td align="center">内部是LinkedHashMap</td>
 </tr>
 </tbody></table>
+<p>常用方法与List类似，与List不同的是，Set还提供了equals(Object object)和hashCode()方法，供其子类重写，以实现对集合中插入重复元素的处理。</p>
 <p>​    <font size="5" color="brown"><strong>MAP</strong></font></p>
 <table>
 <thead>
 <tr>
-<th>类名</th>
-<th>可重复性</th>
-<th>底层实现</th>
-<th>安全性</th>
-<th>允许null值</th>
+<th align="center">类名</th>
+<th align="center">可重复性</th>
+<th align="center">底层实现</th>
+<th align="center">安全性</th>
+<th align="center">有序性</th>
+<th align="center">允许null值</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>HashMap</td>
-<td>键不可重复，值可重复</td>
-<td>Hash表</td>
-<td>线程不安全</td>
-<td>允许key或value为null</td>
+<td align="center">HashMap</td>
+<td align="center">键不可重复，值可重复</td>
+<td align="center">Hash表</td>
+<td align="center">线程不安全</td>
+<td align="center">无序</td>
+<td align="center">允许key或value为null</td>
 </tr>
 <tr>
-<td>HashTable</td>
-<td>键不可重复，值可重复</td>
-<td>Hash表</td>
-<td>线程安全</td>
-<td>key和value都不允许为null</td>
+<td align="center">HashTable</td>
+<td align="center">键不可重复，值可重复</td>
+<td align="center">Hash表</td>
+<td align="center">线程安全</td>
+<td align="center">无序</td>
+<td align="center">key和value都不允许为null</td>
 </tr>
 <tr>
-<td>TreeMap</td>
-<td>键不可重复，值可重复</td>
-<td>二叉树</td>
-<td>\</td>
-<td>\</td>
+<td align="center">TreeMap</td>
+<td align="center">键不可重复，值可重复</td>
+<td align="center">二叉树</td>
+<td align="center">\</td>
+<td align="center">有序</td>
+<td align="center">\</td>
+</tr>
+</tbody></table>
+<p>常用方法：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>put(Object key, Object value)</em></td>
+<td align="center">添加映射</td>
+</tr>
+<tr>
+<td align="center"><em>get(Object key)</em></td>
+<td align="center">根据key获取映射的value</td>
+</tr>
+<tr>
+<td align="center"><em>containsKey(Object key)</em></td>
+<td align="center">判断该映射是否包含指定key</td>
+</tr>
+<tr>
+<td align="center"><em>containsValue(object value)</em></td>
+<td align="center">判断该映射是否包含指定value</td>
+</tr>
+<tr>
+<td align="center"><em>remove(Object key)</em></td>
+<td align="center">根据key移除指定键值对</td>
+</tr>
+<tr>
+<td align="center"><em>isEmpty()</em></td>
+<td align="center">判断该映射是否包含键值对</td>
+</tr>
+<tr>
+<td align="center"><em>entrySet()</em></td>
+<td align="center">返回此映射中包含的键值对的Set视图</td>
+</tr>
+<tr>
+<td align="center"><em>size()</em></td>
+<td align="center">返回键值对数</td>
 </tr>
 </tbody></table>
 <hr>
-<h3 id="2-ArrayList和LinkedList的区别"><a href="#2-ArrayList和LinkedList的区别" class="headerlink" title="2.ArrayList和LinkedList的区别"></a>2.ArrayList和LinkedList的区别</h3><p>（1）<code>ArrayList</code>底层采用数组实现，<code>LinkedList</code>底层采用双向循环链表实现；</p>
+<h3 id="2-ArrayList、LinkedList和Vector的区别"><a href="#2-ArrayList、LinkedList和Vector的区别" class="headerlink" title="2.ArrayList、LinkedList和Vector的区别"></a>2.ArrayList、LinkedList和Vector的区别</h3><p>（1）<code>ArrayList</code>和<code>Vector</code>底层采用数组实现，<code>LinkedList</code>底层采用双向循环链表实现；</p>
 <p>（2）<code>ArrayList</code>删改元素受位置影响，因此查询快，增删慢；<code>LinkedList</code>随机访问要移动指针，因此增删快，查询慢；</p>
 <p>（3）<code>ArrayList</code>实现了RandomAccess接口，因此支持高效随即元素访问，而<code>LinkedList</code>不支持；</p>
+<p>（4）<code>ArrayList</code>和<code>LinkedList</code>都是线程不安全的，<code>Vector</code>是线程安全的。</p>
 <hr>
 <h3 id="3-HashMap和HashTable的异同"><a href="#3-HashMap和HashTable的异同" class="headerlink" title="3.HashMap和HashTable的异同"></a>3.HashMap和HashTable的异同</h3><p>相同点：都实现了Map接口（<code>HashTable</code>另实现了Dictionary抽象类）；</p>
 <p>不同点：</p>
 <p>（1）<code>HashTable</code>使用synchronized关键字修饰，是线程安全的；而<code>HashMap</code>是线程不安全的，不是同步的。</p>
 <p>（2）<code>HashMap</code>的键值都可为null，而<code>HashTable</code>的键值都不可为null。</p>
 <p>（3）<code>HashMap</code>的初始容量为16，扩容时容量翻倍；<code>HashTable</code>的初始容量为11，扩容时容量翻倍+1。</p>
+<hr>
+<h3 id="4-HashSet实现原理"><a href="#4-HashSet实现原理" class="headerlink" title="4.HashSet实现原理"></a>4.HashSet实现原理</h3><p><code>HashSet</code>实现Set接口，底层由HashMap实现，为哈希表结构，新增元素相当于HashMap的key，而value默认为一个固定的Object。</p>
+<p>当有元素插入时，会计算元素的HashCode值，将元素插入到哈希表对应的位置中来。</p>
+<p>它继承于AbstractSet，实现了Set、Cloneable、Serializable接口。</p>
+<p>（1）<code>HashSet</code>继承AbstractSet类，获得Set接口大部分实现。</p>
+<p>（2）<code>HashSet</code>实现Set接口，获取Set接口方法，可自定义也可继承。</p>
+<p>（3）<code>HashSet</code>实现Cloneable，获得clone()方法。</p>
+<p>（4）<code>HashSet</code>实现Serializable，可以被序列化。</p>
+<hr>
+<h3 id="5-HashSet去重原理"><a href="#5-HashSet去重原理" class="headerlink" title="5.HashSet去重原理"></a>5.HashSet去重原理</h3><p><code>HashSet</code>在添加元素时，会调用HashMap的put()方法进行对象唯一性判断。该方法会获取元素哈希值，判断key是否为同一个对象，判断key是否equas。</p>
+<p>简单来说，第一步会先调用hashCode()方法获取该元素的哈希值，如果计算获取该元素的存储位置目前并没有任何元素存储，那么该元素可以直接存储；</p>
+<p>反之进行第二步，调用equals()方法与该位置的元素再次比较，如果equals返回true，则不允许添加。</p>
+<hr>
+<h3 id="6-HashMap的数据结构"><a href="#6-HashMap的数据结构" class="headerlink" title="6.HashMap的数据结构"></a>6.HashMap的数据结构</h3><p>通常为<strong>数组+链表</strong>，而当链表长度大于等于8且数组长度大于64时，链表会被转化为红黑树，此时数据结构为<strong>数组+链表+红黑树</strong>。</p>
+<hr>
+<h3 id="7-HashMap的实现原理"><a href="#7-HashMap的实现原理" class="headerlink" title="7.HashMap的实现原理"></a>7.HashMap的实现原理</h3><p><code>HashMap</code>是一个链表散列，基于hashing原理，使用put(key, value)方法存储对象至<code>HashMap</code>中，使用get(key)从<code>HashMap</code>中获取对象。</p>
+<p>bucket：数组，该数组的每一个元素都是一个节点(entry)，该节点可引申为链表。同一个链表上节点的hash值相同。</p>
+<ul>
+<li><p><strong>put(key, value)：</strong></p>
+<p>对key调用hashCode()方法进行hash值计算，随后将hash值与数组长度-1逐位相与，计算获得bucket存储索引值。</p>
+<p>判断该索引值是否有元素，如果为空，则直接存储；如果不为空，判断两个节点是否相同，相同会替换旧value，不相同则会以将该元素插入链表。</p>
+<p>当链表的长度长度大于等于8且数组长度大于64时，便会转换为红黑树。</p>
+<p>如果bucket桶满(容量16 * 加载因子0.75)，就会扩容。</p>
+<p><font color="blue">注意：在JDK1.8之前，链表采用头插法，JDK1.8采用尾插法。</font></p>
+</li>
+<li><p><strong>get(key)：</strong></p>
+<p>根据key的hash值计算索引，找到bucket节点位置，获取值对象。如果该位置只有一个元素，直接返回value，如果是链表结构，则循环链表获取该key的value。</p>
+</li>
+</ul>
+<hr>
+<h3 id="8-如果HashMap中两个对象的HashCode相同？"><a href="#8-如果HashMap中两个对象的HashCode相同？" class="headerlink" title="8.如果HashMap中两个对象的HashCode相同？"></a>8.如果HashMap中两个对象的HashCode相同？</h3><ul>
+<li><p><strong>put(key, value)：</strong></p>
+<p>HashCode相同说明在bucket中的索引位置相同，此时会发生碰撞。这时进入链表数据结构，在该节点的头部或尾部插入元素。当链表长度达到8时，便会转换为红黑树。</p>
+</li>
+<li><p><strong>get(key)：</strong></p>
+<p>对key调用hashCode()方法获取hash值，根据hash值计算bucket索引，获取该位置对象。当两个对象hashCode相同，遍历该节点链表，调用keys.equals()方法找到链表中正确的节点，返回值对象。</p>
+</li>
+</ul>
+<hr>
+<h3 id="9-HashMap为什么线程不安全？"><a href="#9-HashMap为什么线程不安全？" class="headerlink" title="9.HashMap为什么线程不安全？"></a>9.HashMap为什么线程不安全？</h3><p>高并发情形下，在调用put()或resize()方法时，可能导致某个index1下产生循环链表，此时如果get一个不存在的key，而该key的index正好等于index1，就会出现死循环和数据丢失。（在JDK1.8之后，并发执行put操作会出现数据覆盖的问题）</p>
+<hr>
+<h3 id="10-HashMap如何实现线程安全？"><a href="#10-HashMap如何实现线程安全？" class="headerlink" title="10.HashMap如何实现线程安全？"></a>10.HashMap如何实现线程安全？</h3><p>（1）使用Collection类的synchronizedMap方法包装，返回指定映射支持的同步；</p>
+<p>（2）效仿ConcurrentHashMap的分段锁机制，对bucket进行分组，锁住要修改的部分来保证线程安全。</p>
+<hr>
+<h3 id="11-HashMap的扩容机制"><a href="#11-HashMap的扩容机制" class="headerlink" title="11.HashMap的扩容机制"></a>11.HashMap的扩容机制</h3><p>当一个map填满了加载因子0.75*总容量16的时候，即<code>size &gt;= capacity × loadFactor</code>时将会触发扩容机制，创建两倍大小的bucket数组，并将原来的对象放入新的数组中。</p>
+<p>该过程称为rehashing，其调用hash方法找到新的bucket位置。</p>
+<hr>
+<h3 id="12-重新调整HashMap大小会产生什么问题？"><a href="#12-重新调整HashMap大小会产生什么问题？" class="headerlink" title="12.重新调整HashMap大小会产生什么问题？"></a>12.重新调整HashMap大小会产生什么问题？</h3><p>重新调整<code>HashMap</code>大小时，存在条件竞争。如果两个线程都发现<code>HashMap</code>需要重新调整大小，它们会同时执行该操作。该过程中，存储在链表中的元素的次序会反过来，因为移动到新bucket中时，<code>HashMap</code>会使用头插法避免尾部遍历，此时条件竞争会导致死循环。</p>
+<hr>
+<h3 id="13-HashMap的键对象必要条件"><a href="#13-HashMap的键对象必要条件" class="headerlink" title="13.HashMap的键对象必要条件"></a>13.HashMap的键对象必要条件</h3><p>任何对象都可以作为键，但需遵守equals()和hashCode()方法定义的规则，同时当对象插入后不可改变。</p>
+<p>String这样的Wrapper类之所以适合作为键，是因为其用final修饰，保证不可变性，这样在计算hashCode的时候就不会产生键值变化，同时保证了线程安全，减少碰撞，提高性能。</p>
+<hr>
+<h3 id="14-HashMap的长度设置为什么是二次幂？"><a href="#14-HashMap的长度设置为什么是二次幂？" class="headerlink" title="14.HashMap的长度设置为什么是二次幂？"></a>14.HashMap的长度设置为什么是二次幂？</h3><p>该长度服务于key映射到index的hash算法。位运算可以保证性能，效果和取模相同，这样设置长度可以保证二进制位数都是1，从而获得均匀的运算结果。</p>
+<hr>
+<h3 id="15-如何决定选用HashMap还是TreeMap？"><a href="#15-如何决定选用HashMap还是TreeMap？" class="headerlink" title="15.如何决定选用HashMap还是TreeMap？"></a>15.如何决定选用HashMap还是TreeMap？</h3><p>当操作多为插入、删除、定位元素等，采用<code>HashMap</code>；</p>
+<p>当操作多为对有序的key集合进行遍历，采用<code>TreeMap</code>。</p>
+<hr>
+<h3 id="16-HashMap为何采用红黑树结构？"><a href="#16-HashMap为何采用红黑树结构？" class="headerlink" title="16.HashMap为何采用红黑树结构？"></a>16.HashMap为何采用红黑树结构？</h3><blockquote>
+<p>红黑树是一种不严格的平衡二叉查找树，根节点和叶子节点定义为黑，红色节点不能相邻，每个节点到达可达叶子节点的所有路劲都应包括相同数目的黑色节点。</p>
+</blockquote>
+<p>红黑树相当于排序数据，可以自动使用二分法进行定位，在插入删除时性能较高，同时较为稳定。HashMap通过使用红黑树，充分利用链表的内存使用率和红黑树的高级检索功能，将遍历复杂度从O(n)降低为O(log n)。</p>
+<hr>
+<h3 id="17-用ConcurrentHashMap替代HashTable？"><a href="#17-用ConcurrentHashMap替代HashTable？" class="headerlink" title="17.用ConcurrentHashMap替代HashTable？"></a>17.用ConcurrentHashMap替代HashTable？</h3><p>可以。<code>ConcurrentHashMap</code>仅根据同步级别对map进行部分上锁，同步性能更好，但同时<code>HashTable</code>提供更强的线程安全性。</p>
+<hr>
+<h3 id="18-LinkedHashMap和TreeMap如何保证有序？"><a href="#18-LinkedHashMap和TreeMap如何保证有序？" class="headerlink" title="18.LinkedHashMap和TreeMap如何保证有序？"></a>18.LinkedHashMap和TreeMap如何保证有序？</h3><p><code>LinkedHashMap</code>继承自<code>HashMap</code>，维护了一个链表，保证它内部元素的插入顺序，迭代时也按照插入的顺序迭代；</p>
+<p><code>TreeMap</code>按照key的自然顺序排序，可以继承Comparator接口实现。</p>
+<hr>
+<h3 id="19-Map的遍历方式"><a href="#19-Map的遍历方式" class="headerlink" title="19.Map的遍历方式"></a>19.Map的遍历方式</h3><p>（1）keySet()方法，获取所有key的Set；</p>
+<p>（2）values()方法，获取所有value的Collection；</p>
+<p>（3）获取所有键值对集合，使用iterator迭代器遍历；</p>
+<p>（4）获取所有键值对集合，使用for循环遍历。</p>
+<hr>
+<h3 id="20-HashMap解决碰撞（哈希冲突）的方法"><a href="#20-HashMap解决碰撞（哈希冲突）的方法" class="headerlink" title="20.HashMap解决碰撞（哈希冲突）的方法"></a>20.HashMap解决碰撞（哈希冲突）的方法</h3><p>（1）使用散列表来链接拥有相同哈希值的数据；</p>
+<p>（2）使用hash函数降低碰撞概率，使数据分布更平均；</p>
+<p>（3）引入红黑树进一步降低遍历的时间复杂度。</p>
 
     </div>
 
@@ -434,7 +615,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">常见面试题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9B%86%E5%90%88%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.有哪些常见的集合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">2.ArrayList和LinkedList的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HashMap%E5%92%8CHashTable%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">1.3.</span> <span class="nav-text">3.HashMap和HashTable的异同</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9B%86%E5%90%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.有哪些常见的集合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ArrayList%E3%80%81LinkedList%E5%92%8CVector%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">2.ArrayList、LinkedList和Vector的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HashMap%E5%92%8CHashTable%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">3.</span> <span class="nav-text">3.HashMap和HashTable的异同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-HashSet%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4.HashSet实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-HashSet%E5%8E%BB%E9%87%8D%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">5.HashSet去重原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-HashMap%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">6.HashMap的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">7.HashMap的实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%A6%82%E6%9E%9CHashMap%E4%B8%AD%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84HashCode%E7%9B%B8%E5%90%8C%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8.如果HashMap中两个对象的HashCode相同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-HashMap%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">9.HashMap为什么线程不安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-HashMap%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">10.HashMap如何实现线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-HashMap%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">11.</span> <span class="nav-text">11.HashMap的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E9%87%8D%E6%96%B0%E8%B0%83%E6%95%B4HashMap%E5%A4%A7%E5%B0%8F%E4%BC%9A%E4%BA%A7%E7%94%9F%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">12.重新调整HashMap大小会产生什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-HashMap%E7%9A%84%E9%94%AE%E5%AF%B9%E8%B1%A1%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">13.</span> <span class="nav-text">13.HashMap的键对象必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E8%AE%BE%E7%BD%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8C%E6%AC%A1%E5%B9%82%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">14.HashMap的长度设置为什么是二次幂？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%A6%82%E4%BD%95%E5%86%B3%E5%AE%9A%E9%80%89%E7%94%A8HashMap%E8%BF%98%E6%98%AFTreeMap%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">15.如何决定选用HashMap还是TreeMap？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-HashMap%E4%B8%BA%E4%BD%95%E9%87%87%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="nav-number">16.</span> <span class="nav-text">16.HashMap为何采用红黑树结构？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E7%94%A8ConcurrentHashMap%E6%9B%BF%E4%BB%A3HashTable%EF%BC%9F"><span class="nav-number">17.</span> <span class="nav-text">17.用ConcurrentHashMap替代HashTable？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-LinkedHashMap%E5%92%8CTreeMap%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%9C%89%E5%BA%8F%EF%BC%9F"><span class="nav-number">18.</span> <span class="nav-text">18.LinkedHashMap和TreeMap如何保证有序？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-Map%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">19.</span> <span class="nav-text">19.Map的遍历方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-HashMap%E8%A7%A3%E5%86%B3%E7%A2%B0%E6%92%9E%EF%BC%88%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">20.</span> <span class="nav-text">20.HashMap解决碰撞（哈希冲突）的方法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
