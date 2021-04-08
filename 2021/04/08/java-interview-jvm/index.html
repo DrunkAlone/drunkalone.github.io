@@ -20,21 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本篇主要内容：List和Set等。">
+  <meta name="description" content="本篇汇总JVM的知识要点及常见面试题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java面试题之集合类总结（二）">
-<meta property="og:url" content="http://example.com/2021/04/07/java-interview-collection2/index.html">
+<meta property="og:title" content="Java面试题之JVM">
+<meta property="og:url" content="http://example.com/2021/04/08/java-interview-jvm/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="本篇主要内容：List和Set等。">
+<meta property="og:description" content="本篇汇总JVM的知识要点及常见面试题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-07T07:18:47.000Z">
-<meta property="article:modified_time" content="2021-04-07T08:08:36.361Z">
+<meta property="og:image" content="http://example.com/2021/04/08/java-interview-jvm/1.png">
+<meta property="article:published_time" content="2021-04-08T02:08:27.000Z">
+<meta property="article:modified_time" content="2021-04-08T05:03:45.981Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/04/08/java-interview-jvm/1.png">
 
-<link rel="canonical" href="http://example.com/2021/04/07/java-interview-collection2/">
+<link rel="canonical" href="http://example.com/2021/04/08/java-interview-jvm/">
 
 
 <script id="page-configurations">
@@ -47,7 +49,7 @@
   };
 </script>
 
-  <title>Java面试题之集合类总结（二） | Forgiven</title>
+  <title>Java面试题之JVM | Forgiven</title>
   
 
 
@@ -168,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/java-interview-collection2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/java-interview-jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java面试题之集合类总结（二）
+          Java面试题之JVM
         </h1>
 
         <div class="post-meta">
@@ -192,7 +194,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-07 15:18:47 / 修改时间：16:08:36" itemprop="dateCreated datePublished" datetime="2021-04-07T15:18:47+08:00">2021-04-07</time>
+              <time title="创建时间：2021-04-08 10:08:27 / 修改时间：13:03:45" itemprop="dateCreated datePublished" datetime="2021-04-08T10:08:27+08:00">2021-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,60 +217,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本篇主要内容：List和Set等。</p>
+        <p>本篇汇总JVM的知识要点及常见面试题。</p>
 <span id="more"></span>
 
-<h3 id="本篇导读"><a href="#本篇导读" class="headerlink" title="本篇导读"></a>本篇导读</h3><ul>
-<li><font face="等线">1.Collection和Collections的区别</font></li>
-<li><font face="等线">2.如何遍历List？</font></li>
-<li><font face="等线">3.List和数组间的转换？</font></li>
-<li><font face="等线">4.hashCode()和equals()</font></li>
-<li><font face="等线">5.ArrayList基本方法实现</font></li>
-<li><font face="等线">6.LinkedList基本方法实现</font></li>
+<p>Java虚拟机在执行Java程序时，会把其管理的内存分为若干不同的数据区域。</p>
+<p><img src="/2021/04/08/java-interview-jvm/1.png" alt="1"></p>
+<p><font size="4" color="blue"><strong>私有内存区：</strong>伴随线程的产生而产生，一旦线程终止，私有内存区也会自动消除。</font></p>
+<ul>
+<li><strong>程序计数器：</strong>指示当前程序执行到了哪一步。执行Java方法时记录正在执行的虚拟机字节码指令地址；执行本地方法时，值为null。</li>
+<li><strong>虚拟机栈：</strong>线程私有，生命周期和线程一致。执行Java方法。程序执行时入栈，执行完成 后栈针出栈。</li>
+<li><strong>本地方法栈：</strong>为本地方法服务。本地方法由非Java语言实现，与Java环境外交互。</li>
 </ul>
-<h3 id="1-Collection和Collections的区别"><a href="#1-Collection和Collections的区别" class="headerlink" title="1.Collection和Collections的区别"></a>1.Collection和Collections的区别</h3><ul>
-<li>Collection是单列集合的顶层接口。</li>
-<li>Collections是一个集合的工具类，提供了排序、查找等操作集合的常用方法。</li>
+<p><font size="4" color="blue"><strong>共享内存区：</strong>所有线程共享此内存空间，该空间对所有内存可见。</font></p>
+<ul>
+<li><strong>Java堆：</strong>JVM管理内存中最大的一块，所有线程共享，主要存放对象实例和数组。</li>
+<li><strong>方法区：</strong>存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
 </ul>
-<h3 id="2-如何遍历List？"><a href="#2-如何遍历List？" class="headerlink" title="2.如何遍历List？"></a>2.如何遍历List？</h3><p>（1）for循环基于计数器遍历；</p>
-<p>（2）iterator迭代器遍历；</p>
-<p>（3）forEach循环遍历，内部采用iterator实现。</p>
-<h3 id="3-List和数组间的转换？"><a href="#3-List和数组间的转换？" class="headerlink" title="3.List和数组间的转换？"></a>3.List和数组间的转换？</h3><ul>
-<li>数组转List：Arrays.asList(array)；</li>
-<li>List转数组：List自带的toArray()方法。</li>
-</ul>
-<h3 id="4-hashCode-和equals"><a href="#4-hashCode-和equals" class="headerlink" title="4.hashCode()和equals()"></a>4.hashCode()和equals()</h3><ul>
-<li>如果两个对象equals，那么它们的hashCode值一定相等；</li>
-<li>如果两个对象hashCode值相等，它们不一定equals，即碰撞。</li>
-<li>当equals方法被重写，hashCode方法也应被重写。</li>
-</ul>
-<h3 id="5-ArrayList基本方法实现"><a href="#5-ArrayList基本方法实现" class="headerlink" title="5.ArrayList基本方法实现"></a>5.ArrayList基本方法实现</h3><ul>
-<li><p><strong>查询<em>get(int index)</em></strong></p>
-<p>（1）判断下标是否越界；</p>
-<p>（2）通过下标从数组返回元素。</p>
-</li>
-<li><p><strong>顺序添加<em>add(Object object)</em></strong></p>
-<p>（1）通过扩容机制判断原数组是否还有空间，若没有则实例化更大的新数组，把旧数组数据拷贝至新数组；</p>
-<p>（2）添加数组的最后一位元素。</p>
-</li>
-<li><p><strong>中间插入<em>add(int index, Object object)</em></strong></p>
-<p>（1）判断下表是否越界；</p>
-<p>（2）扩容；</p>
-<p>（3）通过复制数组的方式将指定下标后的全部元素后移一位；</p>
-<p>（4）替换指定下标的旧元素。</p>
-</li>
-</ul>
-<h3 id="6-LinkedList基本方法实现"><a href="#6-LinkedList基本方法实现" class="headerlink" title="6.LinkedList基本方法实现"></a>6.LinkedList基本方法实现</h3><ul>
-<li><p><strong>查询<em>get(int index)</em></strong></p>
-<p>（1）判断元素更靠近头部还是尾部；</p>
-<p>（2）若靠近头部，从头部开始依次查询判断。</p>
-</li>
-<li><p><strong>插入元素</strong></p>
-<p>（1）判断元素在链表尾部还是中间；</p>
-<p>（2）若在链表尾部添加，直接将尾节点的下一个指针指向新增节点；</p>
-<p>若在链表中间添加，先判断插入位置是否为首节点，如是则将首节点的上一个指针指向新增节点，否则采用中间插入的方法。</p>
-</li>
-</ul>
+<h3 id="（一）垃圾回收机制"><a href="#（一）垃圾回收机制" class="headerlink" title="（一）垃圾回收机制"></a>（一）垃圾回收机制</h3><p>对于Java堆的内存分布，因为我们只有在程序处于运行期才会知道将创建哪些对象，这部分内存的分配和回收都是动态的，因此垃圾回收机制将会对堆内存进行管理。</p>
+<h4 id="1-主要任务"><a href="#1-主要任务" class="headerlink" title="1.主要任务"></a>1.主要任务</h4><p>（1）分配内存。</p>
+<p>（2）确保被引用对象的内存没被错误回收。</p>
+<p>（3）回收不再被引用的对象的内存空间。</p>
+<h4 id="2-哪些内存需要回收？"><a href="#2-哪些内存需要回收？" class="headerlink" title="2.哪些内存需要回收？"></a>2.哪些内存需要回收？</h4><p>GC回收前，会判断对象中哪些存活，哪些死亡。</p>
+<blockquote>
+<p>当一个对象的地址没有变量去引用时，该对象就会成为垃圾对象。</p>
+</blockquote>
+<p>判断方法有二：</p>
+<p><strong>A.引用计数算法</strong></p>
+<p>当一个地方引用该对象时，计数器+1；引用失效时，计数器-1。当计数值为0时，不可能再被引用。</p>
+<p>这种算法很难解决对象之间相互矛盾循环引用的问题。</p>
+<p><strong>B.可达性分析算法</strong></p>
+<p>标记GC Root的起始点，从节点向下搜索，路径称为引用链。当一个对象到GC Root没有任何引用链相连，即不可达时，说明该对象不可用。</p>
+<h4 id="3-什么时候回收？"><a href="#3-什么时候回收？" class="headerlink" title="3.什么时候回收？"></a>3.什么时候回收？</h4><p>当GC空闲时，会对垃圾进行回收。</p>
+<p>对于判断不可达的对象，仍然会再进行筛选。当对象没有覆盖finalize()方法，或finalize()方法已经被虚拟机调用过，便不执行；</p>
+<p>需要执行时，会放置在F-Queue队列中，随后Finalizer线程执行。</p>
+<h4 id="4-如何回收？"><a href="#4-如何回收？" class="headerlink" title="4.如何回收？"></a>4.如何回收？</h4><p>有三种垃圾收集算法：</p>
+<p><strong>A.标记-清除算法</strong></p>
+<p>标记存活的对象，直接清除垃圾对象。</p>
+<p>优点：清除效率高；缺点：内存碎片多。</p>
+<p><strong>B.标记-整理算法</strong></p>
+<p>标记存活的对象，然后将存活的对象移动到一个连续的区域，清除该区域外的全部对象。</p>
+<p>优点：不会产生内存碎片；缺点：需要移动对象，效率低。</p>
+<p><strong>C.标记-复制算法</strong></p>
+<p>将内存区域分为两个部分，标记存活的对象，将存活的对象复制到另一个区域，然后将本区域全部清除。</p>
+<p>缺点：空间利用率较低。</p>
+<h4 id="5-垃圾回收流程"><a href="#5-垃圾回收流程" class="headerlink" title="5.垃圾回收流程"></a>5.垃圾回收流程</h4><p>（1）新建的对象大部分都存储在Eden区；</p>
+<p>（2）当Eden区内存不足时，Minor GC释放不活跃对象，并将部分活跃对象复制到Survivor区中，同时清空Eden区；</p>
+<p>（3）当Eden区再次满了，将Survivor中不能清空的对象存放到另一个Survivor中，同时将Eden区中不能清空的对象复制到Survivor，清空Eden区；</p>
+<p>（4）重复多次（默认15次），Survivor中没有被清理的对象会被复制到老年区Old；</p>
+<p>（5）当Old达到一定比例，会触发Major GC释放老年代；</p>
+<p>（6）当Old区满，会触发一次完整的垃圾回收Full GC；</p>
+<p>（7）如果内存仍然不够，JVM抛出内存不足，内存泄漏。</p>
 
     </div>
 
@@ -288,13 +286,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/06/Day20/" rel="prev" title="Day20 Summary">
-      <i class="fa fa-chevron-left"></i> Day20 Summary
+    <a href="/2021/04/07/java-interview-database/" rel="prev" title="Java面试题之数据库">
+      <i class="fa fa-chevron-left"></i> Java面试题之数据库
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/07/java-interview-database/" rel="next" title="Java面试题之数据库">
-      Java面试题之数据库 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -353,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">本篇导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Collection%E5%92%8CCollections%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">1.Collection和Collections的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E9%81%8D%E5%8E%86List%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">2.如何遍历List？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List%E5%92%8C%E6%95%B0%E7%BB%84%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">3.List和数组间的转换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-hashCode-%E5%92%8Cequals"><span class="nav-number">5.</span> <span class="nav-text">4.hashCode()和equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ArrayList%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.</span> <span class="nav-text">5.ArrayList基本方法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-LinkedList%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.</span> <span class="nav-text">6.LinkedList基本方法实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">（一）垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%93%AA%E4%BA%9B%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.哪些内存需要回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么时候回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">5.垃圾回收流程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
