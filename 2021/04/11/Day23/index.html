@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/glass32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/glass16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本日知识点：滴滴笔试真题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day23 Summary">
+<meta property="og:url" content="http://example.com/2021/04/11/Day23/index.html">
+<meta property="og:site_name" content="Forgiven">
+<meta property="og:description" content="本日知识点：滴滴笔试真题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-11T01:46:59.000Z">
+<meta property="article:modified_time" content="2021-04-11T03:56:51.537Z">
+<meta property="article:author" content="DrunkAlone">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="真题">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/04/11/Day23/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Day23 Summary | Forgiven</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Forgiven</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">mixed by Rye and Bourbon</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/11/Day23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DrunkAlone">
+      <meta itemprop="description" content="personal blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgiven">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day23 Summary
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-11 09:46:59 / 修改时间：11:56:51" itemprop="dateCreated datePublished" datetime="2021-04-11T09:46:59+08:00">2021-04-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>本日知识点：</strong>滴滴笔试真题。</p>
+<span id="more"></span>
+
+<h2 id="一、真题总结"><a href="#一、真题总结" class="headerlink" title="一、真题总结"></a>一、真题总结</h2><p>复盘昨天的滴滴笔试真题。</p>
+<p>总体来说答得非常差，很简单的一道编程算法题被无限复杂化。虽然绕了些弯路把思路理清了，但因为考虑到用Java编写较为复杂，同时所剩时间不多，直接选择放弃。</p>
+<p>只列两道编程题：</p>
+<h3 id="1-任务调度"><a href="#1-任务调度" class="headerlink" title="1.任务调度"></a>1.任务调度</h3><p><strong>题目描述：</strong>优秀的操作系统离不开优秀的任务调度算法。现在，有一台计算机即将执行n个任务，每个任务都有一个准备阶段和执行阶段。只有在准备阶段完成后，执行阶段才可以开始。同一时间，计算机只能执行一个任务的执行阶段，同时可以执行任意多个任务的准备阶段。请你设计一个算法，合理分配任务执行顺序，并输出完成所有任务的最少时间。</p>
+<p><strong>输入描述：</strong>第一行一个整数n表示任务的数量（1&lt;=n&lt;=5*10^4）</p>
+<p>接下来n行每行两个整数a，b表示第i个任务的准备时长和执行时长。（1&lt;=a,b&lt;=10^9）</p>
+<p><strong>输出描述：</strong>仅一行一个整数，表示执行所有任务的最少时间。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">样例输入</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">5</span> <span class="number">1</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line">样例输出</span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Task</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a, b;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Task</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = scan.nextInt();</span><br><span class="line">		Task task[] = <span class="keyword">new</span> Task[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			task[i] = <span class="keyword">new</span> Task();</span><br><span class="line">			task[i].a = scan.nextInt();</span><br><span class="line">			task[i].b = scan.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(task, <span class="keyword">new</span> Comparator&lt;Task&gt;() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Task t1, Task t2)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> t1.a - t2.a;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">int</span> res = task[<span class="number">0</span>].a + task[<span class="number">0</span>].b;</span><br><span class="line">		<span class="keyword">if</span>(task.length &lt;= <span class="number">1</span>)System.out.println(res);</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(task[i].a &gt; res)res += task[i].a - res;</span><br><span class="line">				res += task[i].b;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(res);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>是方才基于昨天的思路写出来的，不知道AC率多少。</p>
+<p>主要思想是按照等待时间排序，初始化所需时间为第一个任务的等待时间+执行时间。</p>
+<p>对于每一个任务，判断其等待时间是否大于所需时间，如果大于则所需时间加上该等待时间与上一步所需时间的差值。</p>
+<p>遍历每个任务时都加上其执行时间，最终的结果即为最短时间。</p>
+<h3 id="2-等差植树"><a href="#2-等差植树" class="headerlink" title="2.等差植树"></a>2.等差植树</h3><p><strong>题目描述：</strong>小A的家门口有一排树，每棵树都有一个正整数的高度。由于树的高度不同，来到小A家的朋友都觉得很难看。为了将这些树高度变得好看，小A决定对其中某些树施展魔法，具体来说，每施展一次魔法，可以把一棵树的高度变成任意正整数（可以变高也可以变低）。</p>
+<p>小A认为，这排树如果能构成等差为<code>x</code>的等差数列就好看了。但是小A不想施展太多次魔法，他想知道最少施展魔法的次数。</p>
+<p>形式上来说，小A家门口一共有<code>n</code>棵树，第i棵树高度为<code>ai</code>。小A最后的目标为对于任意<code>2≤i≤n</code>，<code>ai-ai-1=x</code>。</p>
+<p><strong>输入描述：</strong>输入第一行包含两个正整数，n和x，含义如题面所示。</p>
+<p>输入第二行包含n个正整数，第i个数的含义为第i棵树的高度ai。</p>
+<p>范围：n≤10^5,1≤ai≤10^5，x≤1000</p>
+<p><strong>输出描述：</strong>输出包含一个正整数，即小A最少施展魔法的次数。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">样例输入</span><br><span class="line"><span class="number">5</span> <span class="number">2</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">1</span> <span class="number">3</span> <span class="number">5</span></span><br><span class="line">样例输出</span><br><span class="line"><span class="number">3</span></span><br><span class="line">说明：对<span class="number">3</span>、<span class="number">4</span>、<span class="number">5</span>号树施法，最后变为<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9.</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>参考了牛客网大佬的解法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getAlterTree</span><span class="params">(<span class="keyword">int</span> trees[], <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">		Map&lt;Long, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Long, Integer&gt;();</span><br><span class="line">		<span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> length = trees.length;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> height = trees[i];</span><br><span class="line">			<span class="keyword">long</span> b = height - (<span class="keyword">long</span>)k * i;</span><br><span class="line">			<span class="keyword">if</span>(b &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">				map.put(b, map.getOrDefault(b, <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">				number = Math.max(number, map.get(b));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> length - number;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = scan.nextInt();</span><br><span class="line">		<span class="keyword">int</span> x = scan.nextInt();</span><br><span class="line">		<span class="keyword">int</span> trees[] = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			trees[i] = scan.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> res = Main.getAlterTree(trees, x);</span><br><span class="line">		System.out.println(res);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>主要思想：</strong>该问题等价于，对于一些二维点[1,a1],[2,a2],…[i, ai]（前为树的序号，后为树的高度），最多有多少点能构成一条固定斜率为k（即题目中的等差值x）的直线y = kx + b。</p>
+<p>因为斜率已知，每棵树的x和y已知，所以问题可以同化为b = y - kx，有多个b相同，<strong>b重复的最大次数</strong>即是在该施法过程中<strong>不需要变动的树的个数</strong>，于是需要施法的次数等于树的总数减去b重复的最大次数。</p>
+<p>计算b重复的次数直接采用HashMap统计每个b的出现频率即可。</p>
+<hr>
+<p><strong>一些碎碎念：</strong></p>
+<p>最近的状态可谓差到无以复加。既懒散又焦灼，自甘堕落地颓废着，对找工作提不起一点劲。</p>
+<p>我务必要认清现状：这些艰辛并不是因为我有多倒霉，而是我多年散漫随性的积压产物。这是我该吃的苦，是我该正视的真实。</p>
+<p>曾几何时我会因为成功率渺茫而率先放弃尝试，甚至都不曾给过自己任何机会。</p>
+<p>现在我需要学会接受这个不优秀的自己，要在泥泞中摸爬滚打。失败了就复盘，大不了从头再来。</p>
+<p>除了自怨自艾，我可以有更加积极的应对方式。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/%E7%9C%9F%E9%A2%98/" rel="tag"># 真题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/10/Day22/" rel="prev" title="Day22 Summary">
+      <i class="fa fa-chevron-left"></i> Day22 Summary
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9C%9F%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">一、真题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">1.任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AD%89%E5%B7%AE%E6%A4%8D%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">2.等差植树</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DrunkAlone</p>
+  <div class="site-description" itemprop="description">personal blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DrunkAlone</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
