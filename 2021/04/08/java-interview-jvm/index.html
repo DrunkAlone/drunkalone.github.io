@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/04/08/java-interview-jvm/1.png">
 <meta property="article:published_time" content="2021-04-08T02:08:27.000Z">
-<meta property="article:modified_time" content="2021-04-16T13:46:30.809Z">
+<meta property="article:modified_time" content="2021-04-23T08:15:24.681Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-16 21:46:30" itemprop="dateModified" datetime="2021-04-16T21:46:30+08:00">2021-04-16</time>
+                <time title="修改时间：2021-04-23 16:15:24" itemprop="dateModified" datetime="2021-04-23T16:15:24+08:00">2021-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,6 +239,7 @@
 <li><strong>Java堆：</strong>JVM管理内存中最大的一块，所有线程共享，主要存放对象实例和数组。</li>
 <li><strong>方法区：</strong>存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
 </ul>
+<p>栈中存放局部变量和形参，堆中存放new出的对象。</p>
 <h3 id="（一）垃圾回收机制"><a href="#（一）垃圾回收机制" class="headerlink" title="（一）垃圾回收机制"></a>（一）垃圾回收机制</h3><p>对于Java堆的内存分布，因为我们只有在程序处于运行期才会知道将创建哪些对象，这部分内存的分配和回收都是动态的，因此垃圾回收机制将会对堆内存进行管理。</p>
 <h4 id="1-主要任务"><a href="#1-主要任务" class="headerlink" title="1.主要任务"></a>1.主要任务</h4><p>（1）分配内存。</p>
 <p>（2）确保被引用对象的内存没被错误回收。</p>
@@ -274,6 +275,17 @@
 <p>（6）当Old区满，会触发一次完整的垃圾回收Full GC；</p>
 <p>（7）如果内存仍然不够，JVM抛出内存不足，内存泄漏。</p>
 <h4 id="6-垃圾回收器为什么需要重新标记？"><a href="#6-垃圾回收器为什么需要重新标记？" class="headerlink" title="6.垃圾回收器为什么需要重新标记？"></a>6.垃圾回收器为什么需要重新标记？</h4><p>为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录。</p>
+<h4 id="7-深拷贝和浅拷贝的区别"><a href="#7-深拷贝和浅拷贝的区别" class="headerlink" title="7.深拷贝和浅拷贝的区别"></a>7.深拷贝和浅拷贝的区别</h4><blockquote>
+<p><strong>浅拷贝：</strong>对于基本数据类型的成员变量直接进行值传递，复制属性给新的对象；对于引用数据类型的成员变量进行引用传递，只复制一份内存地址的引用值。</p>
+</blockquote>
+<blockquote>
+<p><strong>深拷贝：</strong>不仅要复制对象所有基本数据类型的成员变量值，还要为所有引用变量申请存储空间，并复制每个引用变量所引用的对象。</p>
+</blockquote>
+<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象仍然共享同一块内存。</p>
+<p>深拷贝会额外创造一个一模一样的对象，新对象和原对象不共享内存，修改新对象不会影响到原对象。</p>
+<h4 id="8-深拷贝和浅拷贝的实现方式"><a href="#8-深拷贝和浅拷贝的实现方式" class="headerlink" title="8.深拷贝和浅拷贝的实现方式"></a>8.深拷贝和浅拷贝的实现方式</h4><p>浅拷贝：拷贝构造方法或重写Object.clone()。</p>
+<p>深拷贝：（1）Object.clone()：所有涉及的类实现声明接口Cloneable，并覆盖Object类中的clone()方法。</p>
+<p>（2）序列化：所有涉及的类实现接口Serializable。</p>
 
     </div>
 
@@ -358,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">（一）垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%93%AA%E4%BA%9B%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.哪些内存需要回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么时候回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">5.垃圾回收流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%A0%87%E8%AE%B0%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">6.垃圾回收器为什么需要重新标记？</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">（一）垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%93%AA%E4%BA%9B%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.哪些内存需要回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么时候回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">5.垃圾回收流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%A0%87%E8%AE%B0%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">6.垃圾回收器为什么需要重新标记？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.7.</span> <span class="nav-text">7.深拷贝和浅拷贝的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.8.</span> <span class="nav-text">8.深拷贝和浅拷贝的实现方式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -372,7 +384,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

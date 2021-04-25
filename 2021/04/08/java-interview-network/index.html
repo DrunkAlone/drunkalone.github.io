@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/04/08/java-interview-network/a.png">
 <meta property="article:published_time" content="2021-04-08T12:30:06.000Z">
-<meta property="article:modified_time" content="2021-04-10T10:21:14.911Z">
+<meta property="article:modified_time" content="2021-04-23T07:18:14.988Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -201,7 +201,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:21:14" itemprop="dateModified" datetime="2021-04-10T18:21:14+08:00">2021-04-10</time>
+                <time title="修改时间：2021-04-23 15:18:14" itemprop="dateModified" datetime="2021-04-23T15:18:14+08:00">2021-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,14 +258,31 @@
 </ul>
 <p>（2）安全方面：</p>
 <ul>
-<li>TCP提供可靠的服务，传送的数据无差错、不丢失、不重复且按序到达。</li>
-<li>UDP尽最大努力交付，因此不保证可靠。</li>
+<li><code>TCP</code>提供可靠的服务，传送的数据无差错、不丢失、不重复且按序到达。</li>
+<li><code>UDP</code>尽最大努力交付，因此不保证可靠。</li>
 </ul>
 <p>（3）传输效率：</p>
 <ul>
-<li>TCP传输效率相对较低。</li>
-<li>UDP传输效率高，适用于对高速传输和实时性有较高的通信或广播通信。</li>
+<li><code>TCP</code>传输效率相对较低。</li>
+<li><code>UDP</code>传输效率高，适用于对高速传输和实时性有较高的通信或广播通信。</li>
 </ul>
+<p>（4）连接对象数量：</p>
+<ul>
+<li><code>TCP</code>连接点对点，一对一。</li>
+<li><code>UDP</code>连接支持一对一、一对多、多对一和多对多。</li>
+</ul>
+<h3 id="4-HTTP和HTTPS的原理"><a href="#4-HTTP和HTTPS的原理" class="headerlink" title="4.HTTP和HTTPS的原理"></a>4.HTTP和HTTPS的原理</h3><p><strong>HTTP：</strong>超文本传输协议HyperText Transfer Protocol。</p>
+<p>原理：客户端的浏览器首先通过网络与服务器建立连接，该连接通过TCP完成，端口号通常为80。建立连接后，客户端发送一个请求给服务器，请求格式为URL+协议版本号+请求修饰符+客户机信息等。</p>
+<p>服务器接到请求后，给予相应响应信息，格式为一个状态行，包括协议版本号+成功或错误代码+服务器信息+实体信息等。</p>
+<p><strong>HTTPS：</strong>以安全为目标的HTTP通道，是HTTP的安全版。HTTPS的安全基础是SSL。SSL协议位于TCP/IP协议和各种应用层协议之间，为数据通讯提供安全支持。</p>
+<p>SSL协议分为SSL记录协议和SSL握手协议。</p>
+<p>SSL记录协议建立在可靠传输协议之上，为高层协议提供数据封装、加密、压缩等功能。</p>
+<p>SSL握手协议建立在SSL记录协议之上，用于实际数据运输开始前的身份验证、交换秘钥等。</p>
+<h3 id="5-HTTP和HTTPS的区别"><a href="#5-HTTP和HTTPS的区别" class="headerlink" title="5.HTTP和HTTPS的区别"></a>5.HTTP和HTTPS的区别</h3><p>（1）<code>HTTPS</code>协议用到CA申请证书，而<code>HTTP</code>不需要。</p>
+<p>（2）<code>HTTP</code>是超文本传输协议，信息明文传输；<code>HTTPS</code>是具有安全性的SSL加密传输协议。</p>
+<p>（3）<code>HTTP</code>使用80端口，<code>HTTPS</code>使用443端口。</p>
+<p>（4）<code>HTTP</code>连接简单，是无状态的；<code>HTTPS</code>是由SSL+HTTP协议构建的可加密传输、身份验证的网络协议，更加安全。</p>
+<p>HTTPS相对于HTTP的<strong>改进</strong>：增加双向身份认证、使用加密算法保证数据传输安全性、防止报文重放攻击。</p>
 
     </div>
 
@@ -351,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1.OSI模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GET%E5%92%8CPOST%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">2.GET和POST请求的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3.TCP和UDP的区别</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1.OSI模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GET%E5%92%8CPOST%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">2.GET和POST请求的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3.TCP和UDP的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4.HTTP和HTTPS的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">5.HTTP和HTTPS的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -365,7 +382,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
