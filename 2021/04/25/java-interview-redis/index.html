@@ -28,7 +28,7 @@
 <meta property="og:description" content="本篇汇总Redis知识点及常见面试题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-25T13:05:01.000Z">
-<meta property="article:modified_time" content="2021-04-25T13:51:50.312Z">
+<meta property="article:modified_time" content="2021-04-26T02:47:09.327Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -191,10 +191,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-25 21:05:01 / 修改时间：21:51:50" itemprop="dateCreated datePublished" datetime="2021-04-25T21:05:01+08:00">2021-04-25</time>
+              <time title="创建时间：2021-04-25 21:05:01" itemprop="dateCreated datePublished" datetime="2021-04-25T21:05:01+08:00">2021-04-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-26 10:47:09" itemprop="dateModified" datetime="2021-04-26T10:47:09+08:00">2021-04-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,16 +225,47 @@
         <p>本篇汇总Redis知识点及常见面试题。</p>
 <span id="more"></span>
 
-<h3 id="1-什么是Redis？"><a href="#1-什么是Redis？" class="headerlink" title="1.什么是Redis？"></a>1.什么是Redis？</h3><p>Redis是一个高性能的key-value数据库。</p>
+<h3 id="1-什么是Redis？"><a href="#1-什么是Redis？" class="headerlink" title="1.什么是Redis？"></a>1.什么是Redis？</h3><p>Redis是一个高性能且支持持久化的key-value内存数据库，通过持久化机制把内存中的数据同步到硬盘文件来保证数据持久化。</p>
 <p>与其他key-value缓存产品相比有以下三个特点：</p>
 <p>（1）支持数据的持久化，可以将内存中的数据保存在磁盘中，重启时可再次加载使用。</p>
 <p>（2）除了支持key-value数据，还提供list、set、hash等数据结构的存储。</p>
 <p>（3）支持数据的备份，即master-slave模式的数据备份。</p>
-<h3 id="2-Redis的数据类型"><a href="#2-Redis的数据类型" class="headerlink" title="2.Redis的数据类型"></a>2.Redis的数据类型</h3><p>共五种：String、hash、list、set、zsetsorted set有序集合。</p>
+<h3 id="2-Redis的数据类型及应用场景"><a href="#2-Redis的数据类型及应用场景" class="headerlink" title="2.Redis的数据类型及应用场景"></a>2.Redis的数据类型及应用场景</h3><p>共五种：<strong>String、hash、list、set、zsetsorted set</strong>有序集合。</p>
+<p><strong>String：</strong>常规set/get操作，一般做一些复杂计数功能的缓存。</p>
+<p><strong>hash：</strong>value存放结构化对象，可用于单点登录时存储用户信息，以cookieID作为key，设置30分钟缓存过期时间，模拟session。</p>
+<p><strong>list：</strong>实现简单的消息队列功能，也可以用irange命令做基于redis的分页功能。</p>
+<p><strong>set：</strong>可以用于全局去重。集群部署使用JVM自带Set较麻烦所以采用该方式。</p>
+<p><strong>sorted set：</strong>相比set多了权重参数score，可以用作排行榜实现。</p>
 <h3 id="3-使用Redis的好处？"><a href="#3-使用Redis的好处？" class="headerlink" title="3.使用Redis的好处？"></a>3.使用Redis的好处？</h3><p>（1）速度快，因为数据存在内存中，查找和操作的效率高。</p>
 <p>（2）支持丰富的数据类型。</p>
 <p>（3）支持事务，操作都是原子性的，即对数据的更改要么全部执行，要么全不执行。</p>
 <p>（4）可用于缓存消息，按key设置过期时间，过期后会自动删除。</p>
+<h3 id="4-Redis持久化机制"><a href="#4-Redis持久化机制" class="headerlink" title="4.Redis持久化机制"></a>4.Redis持久化机制</h3><p>实现方法：单独创建fork()一个子进程，按当前父进程的数据库数据复制到子进程的内存中，然后由子进程写入临时文件中，持久化过程结束后，再用该临时文件替换上次的快照文件，子进程退出，内存释放。</p>
+<h3 id="5-Redis的持久化方式及优缺点"><a href="#5-Redis的持久化方式及优缺点" class="headerlink" title="5.Redis的持久化方式及优缺点"></a>5.Redis的持久化方式及优缺点</h3><p><strong>RDB：</strong>默认。按照一定的时间周期策略把内存的数据以快照的形式保存到硬盘的二进制文件。该快照存储对应产生的数据文件为dump.rdb，通过配置文件中的save参数来定义快照的周期。</p>
+<p><strong><font color="red">RDB优点：</font></strong></p>
+<p>（1）只有一个dump.rdb，方便持久化。</p>
+<p>（2）容灾性好，文件可以保存到安全的磁盘。</p>
+<p>（3）IO性能最大化，fork子进程完成写操作，让主进程继续处理命令，效率高。</p>
+<p><strong><font color="blue">RDB缺点：</font></strong></p>
+<p>数据安全性低，持久化间隙Redis发生故障会发生数据丢失。</p>
+<p><strong>AOF：</strong>Redis会将每一个收到的写命令都通过write函数追加到文件最后，Redis重启时会通过重新执行文件中保存的写命令在内存中重建整个数据库的内容。</p>
+<p><strong><font color="red">AOF优点：</font></strong></p>
+<p>（1）数据安全。</p>
+<p>（2）通过append模式写文件，即使服务器宕机，也能通过redis-check-aof工具解决数据一致性问题。</p>
+<p>（3）rewrite模式在文件没被重写之前可以删除其中某些命令。</p>
+<p><strong><font color="blue">AOF缺点：</font></strong></p>
+<p>（1）AOF文件比RDB文件大，且恢复速度慢。</p>
+<p>（2）数据集大时，启动效率低。</p>
+<h3 id="6-Redis优化方案"><a href="#6-Redis优化方案" class="headerlink" title="6.Redis优化方案"></a>6.Redis优化方案</h3><p>（1）Master不做日志等持久化工作。</p>
+<p>（2）开启AOF备份数据，每秒同步一次。</p>
+<p>（3）Master和Slave在同一局域网保证连接稳定性。</p>
+<p>（4）主从复制采用单链表结构。</p>
+<h3 id="7-Redis和Memcached的区别"><a href="#7-Redis和Memcached的区别" class="headerlink" title="7.Redis和Memcached的区别"></a>7.Redis和Memcached的区别</h3><p>（1）<code>Memcached</code>把数据全部存于内存，断电后会挂掉，且数据不能超过内存大小。</p>
+<p><code>Redis</code>一部分存在硬盘上，从而保证数据的持久性。</p>
+<p>（2）<code>Memcached</code>数据类型均为简单的字符串。</p>
+<p>Redis具有复杂的数据类型。</p>
+<p>（3）<code>Redis</code>的速度较<code>Memcached</code>快很多。</p>
+<p>（4）<code>Redis</code>自己构建了VM机制，而<code>Memcached</code>直接调用系统函数。</p>
 
     </div>
 
@@ -311,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFRedis%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Redis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2.Redis的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8Redis%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.使用Redis的好处？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFRedis%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Redis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">2.Redis的数据类型及应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8Redis%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.使用Redis的好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">4.Redis持久化机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">5.Redis的持久化方式及优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Redis%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">6.Redis优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Redis%E5%92%8CMemcached%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">7.Redis和Memcached的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
