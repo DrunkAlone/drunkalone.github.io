@@ -28,8 +28,10 @@
 <meta property="og:description" content="本篇汇总常见的计算机网络面试题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/04/08/java-interview-network/a.png">
+<meta property="og:image" content="http://example.com/2021/04/08/java-interview-network/three.png">
+<meta property="og:image" content="http://example.com/2021/04/08/java-interview-network/four.png">
 <meta property="article:published_time" content="2021-04-08T12:30:06.000Z">
-<meta property="article:modified_time" content="2021-04-25T03:23:07.661Z">
+<meta property="article:modified_time" content="2021-04-28T12:06:03.410Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -201,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-25 11:23:07" itemprop="dateModified" datetime="2021-04-25T11:23:07+08:00">2021-04-25</time>
+                <time title="修改时间：2021-04-28 20:06:03" itemprop="dateModified" datetime="2021-04-28T20:06:03+08:00">2021-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +229,7 @@
         <p>本篇汇总常见的计算机网络面试题。</p>
 <span id="more"></span>
 
-<h3 id="1-OSI模型"><a href="#1-OSI模型" class="headerlink" title="1.OSI模型"></a>1.OSI模型</h3><p><img src="/2021/04/08/java-interview-network/a.png" alt="a"></p>
+<h2 id="1-OSI模型"><a href="#1-OSI模型" class="headerlink" title="1.OSI模型"></a>1.OSI模型</h2><p><img src="/2021/04/08/java-interview-network/a.png" alt="a"></p>
 <ul>
 <li><strong>物理层：</strong>建立、维护、断开物理连接。</li>
 <li><strong>数据链路层：</strong>建立逻辑连接，进行硬件地址寻址，差错检验。</li>
@@ -238,14 +240,14 @@
 <li><strong>应用层：</strong>网络服务与最终用户的接口。<em>HTTP、HTTPS、FTP、TFTP、DNS、TELNET、SMTP、POP3</em></li>
 </ul>
 <hr>
-<h3 id="2-GET和POST请求的区别"><a href="#2-GET和POST请求的区别" class="headerlink" title="2.GET和POST请求的区别"></a>2.GET和POST请求的区别</h3><p>（1）<code>get</code>的url参数可见；<code>post</code>的url参数不可见；</p>
+<h2 id="2-GET和POST请求的区别"><a href="#2-GET和POST请求的区别" class="headerlink" title="2.GET和POST请求的区别"></a>2.GET和POST请求的区别</h2><p>（1）<code>get</code>的url参数可见；<code>post</code>的url参数不可见；</p>
 <p>（2）<code>get</code>通过拼接url传递参数；<code>post</code>通过body体传递参数；</p>
 <p>（3）<code>get</code>请求可以缓存；<code>post</code>请求不能缓存；</p>
 <p>（4）<code>get</code>请求在页面后退时不产生影响；<code>post</code>请求在页面后退时会重新提交请求；</p>
 <p>（5）<code>get</code>一般传输数据大小不超过2K-4K；<code>post</code>传输数据大小根据配置文件设定，可以无限大；</p>
 <p>（6）<code>get</code>请求产生1个TCP数据包；<code>post</code>请求产生2个TCP数据包。</p>
 <hr>
-<h3 id="3-TCP和UDP的区别"><a href="#3-TCP和UDP的区别" class="headerlink" title="3.TCP和UDP的区别"></a>3.TCP和UDP的区别</h3><blockquote>
+<h2 id="3-TCP和UDP的区别"><a href="#3-TCP和UDP的区别" class="headerlink" title="3.TCP和UDP的区别"></a>3.TCP和UDP的区别</h2><blockquote>
 <p>TCP（传输控制协议）：是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
 </blockquote>
 <blockquote>
@@ -274,7 +276,7 @@
 <li><code>UDP</code>连接支持一对一、一对多、多对一和多对多。</li>
 </ul>
 <hr>
-<h3 id="4-HTTP和HTTPS的原理"><a href="#4-HTTP和HTTPS的原理" class="headerlink" title="4.HTTP和HTTPS的原理"></a>4.HTTP和HTTPS的原理</h3><p><strong>HTTP：</strong>超文本传输协议HyperText Transfer Protocol。</p>
+<h2 id="4-HTTP和HTTPS的原理"><a href="#4-HTTP和HTTPS的原理" class="headerlink" title="4.HTTP和HTTPS的原理"></a>4.HTTP和HTTPS的原理</h2><p><strong>HTTP：</strong>超文本传输协议HyperText Transfer Protocol。</p>
 <p>原理：客户端的浏览器首先通过网络与服务器建立连接，该连接通过TCP完成，端口号通常为80。建立连接后，客户端发送一个请求给服务器，请求格式为URL+协议版本号+请求修饰符+客户机信息等。</p>
 <p>服务器接到请求后，给予相应响应信息，格式为一个状态行，包括协议版本号+成功或错误代码+服务器信息+实体信息等。</p>
 <p><strong>HTTPS：</strong>以安全为目标的HTTP通道，是HTTP的安全版。HTTPS的安全基础是SSL。SSL协议位于TCP/IP协议和各种应用层协议之间，为数据通讯提供安全支持。</p>
@@ -282,13 +284,13 @@
 <p>SSL记录协议建立在可靠传输协议之上，为高层协议提供数据封装、加密、压缩等功能。</p>
 <p>SSL握手协议建立在SSL记录协议之上，用于实际数据运输开始前的身份验证、交换秘钥等。</p>
 <hr>
-<h3 id="5-HTTP和HTTPS的区别"><a href="#5-HTTP和HTTPS的区别" class="headerlink" title="5.HTTP和HTTPS的区别"></a>5.HTTP和HTTPS的区别</h3><p>（1）<code>HTTPS</code>协议用到CA申请证书，而<code>HTTP</code>不需要。</p>
+<h2 id="5-HTTP和HTTPS的区别"><a href="#5-HTTP和HTTPS的区别" class="headerlink" title="5.HTTP和HTTPS的区别"></a>5.HTTP和HTTPS的区别</h2><p>（1）<code>HTTPS</code>协议用到CA申请证书，而<code>HTTP</code>不需要。</p>
 <p>（2）<code>HTTP</code>是超文本传输协议，信息明文传输；<code>HTTPS</code>是具有安全性的SSL加密传输协议。</p>
 <p>（3）<code>HTTP</code>使用80端口，<code>HTTPS</code>使用443端口。</p>
 <p>（4）<code>HTTP</code>连接简单，是无状态的；<code>HTTPS</code>是由SSL+HTTP协议构建的可加密传输、身份验证的网络协议，更加安全。</p>
 <p>HTTPS相对于HTTP的<strong>改进</strong>：增加双向身份认证、使用加密算法保证数据传输安全性、防止报文重放攻击。</p>
 <hr>
-<h3 id="6-HTTP常见状态码"><a href="#6-HTTP常见状态码" class="headerlink" title="6.HTTP常见状态码"></a>6.HTTP常见状态码</h3><table>
+<h2 id="6-HTTP常见状态码"><a href="#6-HTTP常见状态码" class="headerlink" title="6.HTTP常见状态码"></a>6.HTTP常见状态码</h2><table>
 <thead>
 <tr>
 <th align="center">状态码</th>
@@ -332,6 +334,44 @@
 <td align="center">服务器内部错误</td>
 </tr>
 </tbody></table>
+<hr>
+<h2 id="7-三次握手"><a href="#7-三次握手" class="headerlink" title="7.三次握手"></a>7.三次握手</h2><h4 id="三次握手的过程"><a href="#三次握手的过程" class="headerlink" title="三次握手的过程"></a>三次握手的过程</h4><p><img src="/2021/04/08/java-interview-network/three.png" alt="three"></p>
+<p>起初客户端处于<code>closed</code>的状态，服务端处于<code>listen</code>状态。</p>
+<p><strong>第一次握手：</strong>客户端给服务器发送一个<code>SYN</code>报文，并指明客户端的初始化序列号<code>ISN(c)</code>。此时客户端处于<code>SYN_SEND</code>状态。</p>
+<p><strong>第二次握手：</strong>服务器收到客户端的<code>SYN</code>报文后，会以自己的SYN报文作应答，并且指定自己的初始化序列号<code>ISN(s)</code>，同时把客户端的<code>ISN(c) + 1</code>作为<code>ACK</code>的值，表示自己已经收到客户端的<code>SYN</code>。此时服务器处于<code>SYN_RECEIVED</code>状态。</p>
+<p><strong>第三次握手：</strong>客户端收到<code>SYN</code>报文后，发送一个<code>ACK</code>报文，把<code>ISN(s) + 1</code>作为<code>ACK</code>的值，表示已经收到了服务器的<code>SYN</code>报文。此时客户端处于<code>established</code>状态。</p>
+<p>服务器收到<code>ACK</code>报文后，也处于<code>established</code>状态，此时双方建立起连接。</p>
+<h4 id="三次握手的作用"><a href="#三次握手的作用" class="headerlink" title="三次握手的作用"></a>三次握手的作用</h4><p>（1）确认双方的接收及发送能力是否正常。</p>
+<p>（2）指定自己的初始化序列号，为后期可靠传送做准备。</p>
+<p>（3）对于HTTPS协议，该过程还会进行数字证书的验证及加密密钥的生成。</p>
+<h4 id="为什么不能两次握手"><a href="#为什么不能两次握手" class="headerlink" title="为什么不能两次握手"></a>为什么不能两次握手</h4><p>差别在于最后客户端对服务器的确认。防止已经失效的连接报文请求突然传送至服务器，从而产生错误。</p>
+<p>例如：客户端发送了第一个请求连接并且没有丢失，只是因为在网络结点中滞留时间较长。此时由于客户端迟迟没有收到ACK确认报文，以为服务器没有收到，会重新发送，但是网络通畅时之前的报文又传送过来了，于是客户端和服务器会建立两次连接，造成不必要的错误和资源浪费。</p>
+<p>而若是三次握手，即使失效报文传至服务器，服务器回复ACK报文，客户端也不会再次确认，于是连接不会再次建立。</p>
+<h4 id="为什么不能四次握手"><a href="#为什么不能四次握手" class="headerlink" title="为什么不能四次握手"></a>为什么不能四次握手</h4><p>因为服务器向客户端发送ACK报文和SYN报文可以优化为一步，也即是三次握手。</p>
+<hr>
+<h2 id="8-四次挥手"><a href="#8-四次挥手" class="headerlink" title="8.四次挥手"></a>8.四次挥手</h2><h4 id="四次挥手的过程"><a href="#四次挥手的过程" class="headerlink" title="四次挥手的过程"></a>四次挥手的过程</h4><p><img src="/2021/04/08/java-interview-network/four.png" alt="four"></p>
+<p>起初均处于<code>established</code>状态。假设客户端发起关闭请求：</p>
+<p><strong>第一次挥手：</strong>客户端发送一个<code>FIN</code>报文，报文中指D定一个序列号<code>ISN(c)</code>。此时客户端处于<code>FIN_WAIT_1</code>状态。</p>
+<p><strong>第二次挥手：</strong>服务器收到<code>FIN</code>后，发送<code>ACK</code>报文，将<code>ISN(c) + 1</code>作为<code>ACK</code>的序列号，表示已收到客户端报文。此时服务器处于<code>CLOSED_WAIT</code>状态。（客户端收到<code>ACK</code>后，进入<code>FIN_WAIT_2</code>状态）</p>
+<p><strong>第三次挥手：</strong>当服务器处理完数据后，发送<code>FIN</code>报文，指定序列号<code>ISN(s)</code>。此时服务器处于<code>LAST_ACK</code>状态。</p>
+<p><strong>第四次挥手：</strong>客户端收到<code>FIN</code>后，发送<code>ACK</code>报文，将<code>ISN(s) + 1</code>作为序列号。此时客户端处于<code>TIME_WAIT</code>状态。经过<code>2MSL</code>时间后，自动进入<code>CLOSED</code>状态，客户端关闭连接。</p>
+<p>服务器收到<code>ACK</code>报文后，进入<code>CLOSED</code>状态，服务器关闭连接。</p>
+<blockquote>
+<p><strong>MSL：</strong>报文最大生存时间，即任何报文在网络上存在的最长时间，超出该时间报文会被丢弃。</p>
+</blockquote>
+<h4 id="为什么需要四次挥手"><a href="#为什么需要四次挥手" class="headerlink" title="为什么需要四次挥手"></a>为什么需要四次挥手</h4><p>关闭连接时，客户端向服务器发送FIN仅代表客户端不再发送数据，却仍能接收数据。服务器收到FIN报文时，先回应一个ACK，但服务器可能还有数据需要处理，只有其不再发送数据时才发送FIN表示同意关闭连接。</p>
+<p>服务器通常需要等待完成数据的发送和处理，因此其ACK和FIN会分开发送，于是比三次握手多了一次。</p>
+<hr>
+<h2 id="9-浏览器访问服务器的过程"><a href="#9-浏览器访问服务器的过程" class="headerlink" title="9.浏览器访问服务器的过程"></a>9.浏览器访问服务器的过程</h2><p>（1）浏览器输入域名；</p>
+<p>（2）浏览器访问DNS服务器，把域名解析为IP地址后返回给浏览器；</p>
+<p>（3）浏览器从IP中解析出端口号；</p>
+<p>（4）浏览器通过解析得到的IP和端口号与Web服务器建立一条TCP通道连接；</p>
+<p>（5）建立TCP连接后，浏览器向Web服务器发送一条HTTP请求报文；</p>
+<p>（6）Web服务器响应，并读取浏览器的请求信息，然后返回一条HTTP响应报文；</p>
+<p>（7）Web服务器关闭HTTP连接，关闭TCP连接，显示访问的网站内容至屏幕。</p>
+<hr>
+<h2 id="10-HTTP的请求结构"><a href="#10-HTTP的请求结构" class="headerlink" title="10.HTTP的请求结构"></a>10.HTTP的请求结构</h2><p>客户端请求信息：请求行+请求头部+空行+请求数据。</p>
+<p>服务器响应信息：状态行+消息报头+空行+响应正文。</p>
 
     </div>
 
@@ -417,7 +457,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OSI%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1.OSI模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GET%E5%92%8CPOST%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">2.GET和POST请求的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3.TCP和UDP的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4.HTTP和HTTPS的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">5.HTTP和HTTPS的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-HTTP%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">6.HTTP常见状态码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-OSI%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1.OSI模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GET%E5%92%8CPOST%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">2.GET和POST请求的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3.TCP和UDP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4.HTTP和HTTPS的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">5.HTTP和HTTPS的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-HTTP%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">6.HTTP常见状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">7.</span> <span class="nav-text">7.三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">7.0.1.</span> <span class="nav-text">三次握手的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">7.0.2.</span> <span class="nav-text">三次握手的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%B8%A4%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">7.0.3.</span> <span class="nav-text">为什么不能两次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">7.0.4.</span> <span class="nav-text">为什么不能四次握手</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">8.</span> <span class="nav-text">8.四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">8.0.1.</span> <span class="nav-text">四次挥手的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">8.0.2.</span> <span class="nav-text">为什么需要四次挥手</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">9.</span> <span class="nav-text">9.浏览器访问服务器的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-HTTP%E7%9A%84%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84"><span class="nav-number">10.</span> <span class="nav-text">10.HTTP的请求结构</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,7 +471,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="本篇汇总Java面试题中的多线程知识点及常见真题总结。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-16T09:23:32.000Z">
-<meta property="article:modified_time" content="2021-04-25T03:02:19.364Z">
+<meta property="article:modified_time" content="2021-04-28T12:21:58.544Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-25 11:02:19" itemprop="dateModified" datetime="2021-04-25T11:02:19+08:00">2021-04-25</time>
+                <time title="修改时间：2021-04-28 20:21:58" itemprop="dateModified" datetime="2021-04-28T20:21:58+08:00">2021-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,40 +257,64 @@
 <h3 id="9-什么是线程池？"><a href="#9-什么是线程池？" class="headerlink" title="9.什么是线程池？"></a>9.什么是线程池？</h3><p>为了避免任务来了才创建线程而导致的响应时间变长，在程序启动时就创建若干线程响应处理，被称为线程池。</p>
 <p>Java提供了Executor框架，可创建不同的线程池。比如每次处理一个任务的单线程池、数目固定的线程池、缓存线程池等。</p>
 <hr>
-<h3 id="10-wait-和sleep-的区别？"><a href="#10-wait-和sleep-的区别？" class="headerlink" title="10.wait()和sleep()的区别？"></a>10.wait()和sleep()的区别？</h3><p><strong>（1）原理不同</strong></p>
-<p>sleep()是Thread类的静态方法。线程通过该方法控制自身流程，该方法会使线程暂停执行一段时间，把执行机会让给其他线程，时间一到该线程会自动苏醒。</p>
-<p>wait()是Object类的方法，用于线程间通信。该方法会使当前拥有该对象锁的进程等待，直到其他线程调用notify()方法才苏醒。</p>
+<h3 id="10-线程池的四种创建方式"><a href="#10-线程池的四种创建方式" class="headerlink" title="10.线程池的四种创建方式"></a>10.线程池的四种创建方式</h3><p><strong>newCachedThreadPool：</strong>可缓存线程池。如果线程池长度超过处理需要，可以灵活回收空闲线程，如无可回收则新建线程。</p>
+<p><strong>newFixedThreadPool：</strong>定长线程池。可控制线程最大并发数，超出的线程在队列等待。</p>
+<p><strong>newScheduledThreadPool：</strong>定长线程池。支持定时及周期性任务执行。</p>
+<p><strong>newSingleThreadExecutor：</strong>单线程化线程池。用唯一工作线程执行任务。</p>
+<hr>
+<h3 id="11-wait-和sleep-的区别？"><a href="#11-wait-和sleep-的区别？" class="headerlink" title="11.wait()和sleep()的区别？"></a>11.wait()和sleep()的区别？</h3><p><strong>（1）原理不同</strong></p>
+<p><code>sleep()</code>是Thread类的静态方法。线程通过该方法控制自身流程，该方法会使线程暂停执行一段时间，把执行机会让给其他线程，时间一到该线程会自动苏醒。</p>
+<p><code>wait()</code>是Object类的方法，用于线程间通信。该方法会使当前拥有该对象锁的线程等待，直到其他线程调用<code>notify()</code>方法才苏醒。</p>
 <p><strong>（2）对锁的处理机制不同</strong></p>
-<p>sleep()方法不涉及线程间的通信，不会释放锁。</p>
-<p>wait()方法中，线程会释放其占用的锁，使线程所在对象中其他synchronized数据被其他线程使用。</p>
+<p><code>sleep()</code>方法不涉及线程间的通信，不会释放锁。</p>
+<p><code>wait()</code>方法中，线程会释放其占用的锁，使线程所在对象中其他synchronized数据被其他线程使用。</p>
 <p><strong>（3）使用区域不同</strong></p>
-<p>sleep()可以放在任何地方使用。</p>
-<p>wait()方法必须放在同步控制方法或同步语句块中使用。</p>
+<p><code>sleep()</code>可以放在任何地方使用。</p>
+<p><code>wait()</code>方法必须放在同步控制方法或同步语句块中使用。</p>
 <p><strong>（4）异常捕获不同</strong></p>
-<p>sleep()必须捕获异常，在sleep()过程中，可能被其他对象调用其interrupt()方法产生异常。</p>
-<p>wait()方法不需要捕获异常。</p>
+<p><code>sleep()</code>必须捕获异常，在<code>sleep()</code>过程中，可能被其他对象调用interrupt()方法产生异常。</p>
+<p><code>wait()</code>方法不需要捕获异常。</p>
 <p>PS：sleep()容易导致死锁，一般使用wait()。</p>
 <hr>
-<h3 id="11-sleep-方法与yield-方法的区别？"><a href="#11-sleep-方法与yield-方法的区别？" class="headerlink" title="11.sleep()方法与yield()方法的区别？"></a>11.sleep()方法与yield()方法的区别？</h3><p><strong>（1）优先级</strong></p>
-<p>sleep()运行时不考虑线程优先级。</p>
-<p>yield()只会给相同或更高优先级的线程运行机会。</p>
+<h3 id="12-sleep-方法与yield-方法的区别？"><a href="#12-sleep-方法与yield-方法的区别？" class="headerlink" title="12.sleep()方法与yield()方法的区别？"></a>12.sleep()方法与yield()方法的区别？</h3><p><strong>（1）优先级</strong></p>
+<p><code>sleep()</code>运行时不考虑线程优先级。</p>
+<p><code>yield()</code>只会给相同或更高优先级的线程运行机会。</p>
 <p><strong>（2）状态</strong></p>
-<p>sleep()运行后会转入阻塞状态，在指定的时间内不会执行。</p>
-<p>yield()使当前线程重回可执行状态，可能在进入可执行状态后马上被执行。</p>
+<p><code>sleep()</code>运行后会转入阻塞状态，在指定的时间内不会执行。</p>
+<p><code>yield()</code>使当前线程重回可执行状态，可能在进入可执行状态后马上被执行。</p>
 <p><strong>（3）异常</strong></p>
-<p>sleep()抛出InterruptExeption，而yield()方法没有声明任何异常。</p>
+<p><code>sleep()</code>抛出InterruptExeption，而<code>yield()</code>方法没有声明任何异常。</p>
 <p><strong>（4）可操作性</strong></p>
-<p>sleep()比yield()具有更好的移植性。</p>
+<p><code>sleep()</code>比<code>yield()</code>具有更好的移植性。</p>
 <hr>
-<h3 id="12-什么是ThreadLocal变量？"><a href="#12-什么是ThreadLocal变量？" class="headerlink" title="12.什么是ThreadLocal变量？"></a>12.什么是ThreadLocal变量？</h3><p>ThreadLocal主要解决多线程中数据因并发产生不一致的问题。其为每个线程并发访问的数据提供一个副本，通过访问副本运行业务，从而减少线程同步带来的性能消耗，也减少了线程并发控制的复杂度。</p>
+<h3 id="13-什么是ThreadLocal变量？"><a href="#13-什么是ThreadLocal变量？" class="headerlink" title="13.什么是ThreadLocal变量？"></a>13.什么是ThreadLocal变量？</h3><p>ThreadLocal主要解决多线程中数据因并发产生不一致的问题。其为每个线程并发访问的数据提供一个副本，通过访问副本运行业务，从而减少线程同步带来的性能消耗，也减少了线程并发控制的复杂度。</p>
 <hr>
-<h3 id="13-ThreadLocal和Synchronized的区别？"><a href="#13-ThreadLocal和Synchronized的区别？" class="headerlink" title="13.ThreadLocal和Synchronized的区别？"></a>13.ThreadLocal和Synchronized的区别？</h3><p>都用于解决多线程并发访问。</p>
-<p>Synchronized利用锁的机制使变量或代码块在某一时刻只能被一个线程访问，用于在多个线程间通信时能够保证数据共享。</p>
-<p>ThreadLocal为每个线程提供变量副本，使得每个线程同一时刻访问的并非同一对象，从而隔离多个线程对数据的共享。</p>
+<h3 id="14-ThreadLocal和Synchronized的区别？"><a href="#14-ThreadLocal和Synchronized的区别？" class="headerlink" title="14.ThreadLocal和Synchronized的区别？"></a>14.ThreadLocal和Synchronized的区别？</h3><p>都用于解决多线程并发访问。</p>
+<p><code>Synchronized</code>利用锁的机制使变量或代码块在某一时刻只能被一个线程访问，用于在多个线程间通信时能够保证数据共享。</p>
+<p><code>ThreadLocal</code>为每个线程提供变量副本，使得每个线程同一时刻访问的并非同一对象，从而隔离多个线程对数据的共享。</p>
 <hr>
-<h3 id="14-如何实现线程安全？"><a href="#14-如何实现线程安全？" class="headerlink" title="14.如何实现线程安全？"></a>14.如何实现线程安全？</h3><p><strong>（1）加锁。</strong>利用Synchronized关键字或ReentrantLock可重入锁对不安全对象进行加锁。前者是语法层面的互斥锁，后者是API层面的互斥锁。</p>
+<h3 id="15-如何实现线程安全？"><a href="#15-如何实现线程安全？" class="headerlink" title="15.如何实现线程安全？"></a>15.如何实现线程安全？</h3><p><strong>（1）加锁。</strong>利用Synchronized关键字或ReentrantLock可重入锁对不安全对象进行加锁。前者是语法层面的互斥锁，后者是API层面的互斥锁。</p>
 <p><strong>（2）非阻塞同步。</strong>没有线程争用共享数据就一直进行操作，否则不断重试申请资源，直到成功为止。需要操作和冲突检测保证原子性，指令包括CAS、SC等。</p>
 <p><strong>（3）线程本地化。</strong>使用ThreadLocal为每一个线程创建一个共享变量的副本来保证无同步访问。</p>
+<hr>
+<h3 id="16-进程间的通信方式IPC"><a href="#16-进程间的通信方式IPC" class="headerlink" title="16.进程间的通信方式IPC"></a>16.进程间的通信方式IPC</h3><ul>
+<li><strong>管道：</strong>半双工，数据只能单向流动，且只能在具有亲缘关系的进程间使用。</li>
+<li><strong>命名管道：</strong>半双工，允许无亲缘关系进程间的通信。</li>
+<li><strong>消息队列：</strong>由消息链表存放在内核中，由消息队列标识符标识。克服信号传递少、管道只能承载无格式字节流及缓冲区大小受限等缺点。</li>
+<li><strong>共享存储：</strong>映射一段能被其他进程锁访问的内存，是最快的IPC方式，通常与信号量配合使用，实现进程间的同步与通信。</li>
+<li><strong>信号量：</strong>控制多个进程对共享资源访问的计数器。通常是一种锁机制。</li>
+<li><strong>套接字：</strong>进程间通信机制，可用于不同进程间的通信。</li>
+<li><strong>信号：</strong>用于通知接收进程某个事件已经发生。</li>
+</ul>
+<hr>
+<h3 id="17-进程调度算法"><a href="#17-进程调度算法" class="headerlink" title="17.进程调度算法"></a>17.进程调度算法</h3><ul>
+<li><strong>先来先服务：</strong>每个进程就绪后便加入就绪队列，当正在运行的进程停止执行，选择就绪队列中存在时间最长的进程运行。</li>
+<li><strong>时间片轮转：</strong>基于抢占策略。以一个周期性间隔产生时钟中断。中断发生后，当前运行的进程被置于就绪队列，随后基于先来先服务算法选择下一个就绪作业运行。</li>
+<li><strong>最短进程优先：</strong>非抢占，选择预计处理时间最短的进程。</li>
+<li><strong>最短剩余时间优先：</strong>抢占，选择预计剩余时间最短的进程。</li>
+<li><strong>最高相应比优先：</strong>R = 周转时间 / 服务时间，当前进程完成或阻塞时，选择R最大的就绪进程执行。（周转时间 = 等待处理的时间 + 服务时间）</li>
+<li><strong>多级反馈队列调度：</strong>设置多个就绪队列并赋予不同优先级。优先权越高，执行时间片越小。对于新进程，首先放入第一队列的末尾，若能在一个时间片内完成便撤离，否则转入第二队列末尾等待调度。第一队列空闲时才调度第二队列执行，以此类推。</li>
+</ul>
 
     </div>
 
@@ -375,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">2.进程和线程的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.什么是线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4.创建线程有哪些方法？各自的优缺点是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%BB%A7%E6%89%BFThread%E7%B1%BB%EF%BC%8C%E9%87%8D%E5%86%99run-%E3%80%82"><span class="nav-number">4.0.1.</span> <span class="nav-text">（1）继承Thread类，重写run()。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3%EF%BC%8C%E9%87%8D%E5%86%99run-%E3%80%82"><span class="nav-number">4.0.2.</span> <span class="nav-text">（2）实现Runnable接口，重写run()。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3%EF%BC%8C%E9%87%8D%E5%86%99call-%E3%80%82"><span class="nav-number">4.0.3.</span> <span class="nav-text">（3）实现Callable接口，重写call()。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Runnable%E5%92%8CCallable%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">5.Runnable和Callable的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Thread%E7%9A%84start-%E5%92%8Crun-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">6.Thread的start()和run()方法有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Java%E4%B8%AD%E7%9A%84volatile%E5%8F%98%E9%87%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">7.Java中的volatile变量是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-notify-%E5%92%8CnotifyAll-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8.notify()和notifyAll()有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">9.什么是线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-wait-%E5%92%8Csleep-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">10.wait()和sleep()的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-sleep-%E6%96%B9%E6%B3%95%E4%B8%8Eyield-%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">11.sleep()方法与yield()方法的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E4%BB%80%E4%B9%88%E6%98%AFThreadLocal%E5%8F%98%E9%87%8F%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">12.什么是ThreadLocal变量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-ThreadLocal%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">13.ThreadLocal和Synchronized的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">14.如何实现线程安全？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">2.进程和线程的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.什么是线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4.创建线程有哪些方法？各自的优缺点是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%BB%A7%E6%89%BFThread%E7%B1%BB%EF%BC%8C%E9%87%8D%E5%86%99run-%E3%80%82"><span class="nav-number">4.0.1.</span> <span class="nav-text">（1）继承Thread类，重写run()。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3%EF%BC%8C%E9%87%8D%E5%86%99run-%E3%80%82"><span class="nav-number">4.0.2.</span> <span class="nav-text">（2）实现Runnable接口，重写run()。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3%EF%BC%8C%E9%87%8D%E5%86%99call-%E3%80%82"><span class="nav-number">4.0.3.</span> <span class="nav-text">（3）实现Callable接口，重写call()。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Runnable%E5%92%8CCallable%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">5.Runnable和Callable的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Thread%E7%9A%84start-%E5%92%8Crun-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">6.Thread的start()和run()方法有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Java%E4%B8%AD%E7%9A%84volatile%E5%8F%98%E9%87%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">7.Java中的volatile变量是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-notify-%E5%92%8CnotifyAll-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8.notify()和notifyAll()有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">9.什么是线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">10.线程池的四种创建方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-wait-%E5%92%8Csleep-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">11.wait()和sleep()的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-sleep-%E6%96%B9%E6%B3%95%E4%B8%8Eyield-%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">12.sleep()方法与yield()方法的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AFThreadLocal%E5%8F%98%E9%87%8F%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">13.什么是ThreadLocal变量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-ThreadLocal%E5%92%8CSynchronized%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">14.ThreadLocal和Synchronized的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">15.如何实现线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8FIPC"><span class="nav-number">16.</span> <span class="nav-text">16.进程间的通信方式IPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">17.进程调度算法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -389,7 +413,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

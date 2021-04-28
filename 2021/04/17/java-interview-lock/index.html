@@ -28,7 +28,7 @@
 <meta property="og:description" content="本篇汇总锁的相关知识点及常见面试题。 Java常见锁的种类：悲观锁、乐观锁、可重入锁、读锁、写锁、synchronized锁（偏向锁、轻量级锁、重量级锁）。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-17T05:23:16.000Z">
-<meta property="article:modified_time" content="2021-04-26T12:56:04.912Z">
+<meta property="article:modified_time" content="2021-04-28T10:32:49.934Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-26 20:56:04" itemprop="dateModified" datetime="2021-04-26T20:56:04+08:00">2021-04-26</time>
+                <time title="修改时间：2021-04-28 18:32:49" itemprop="dateModified" datetime="2021-04-28T18:32:49+08:00">2021-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,6 +225,37 @@
 <p>Java常见锁的种类：悲观锁、乐观锁、可重入锁、读锁、写锁、synchronized锁（偏向锁、轻量级锁、重量级锁）。</p>
 <span id="more"></span>
 
+<h3 id="1-什么是死锁？"><a href="#1-什么是死锁？" class="headerlink" title="1.什么是死锁？"></a>1.什么是死锁？</h3><p>死锁：多个进程在运行过程中因争夺资源而造成的一种僵局。当进程处于僵持状态时，若无外力作用，这些进程都无法向前推进。</p>
+<h3 id="2-产生死锁的原因"><a href="#2-产生死锁的原因" class="headerlink" title="2.产生死锁的原因"></a>2.产生死锁的原因</h3><p>（1）竞争资源</p>
+<p>竞争不可剥夺资源或临时资源时，消息通信顺序不当，可能导致死锁。</p>
+<p>（2）进程间推进顺序非法</p>
+<p>当系统无法按照某种进程推进顺序为每个进程分配所需资源时，导致有进程无法顺利执行完成时，称为系统处于不安全状态。不安全状态<strong>可能</strong>导致死锁。</p>
+<h3 id="3-死锁产生的四个必要条件"><a href="#3-死锁产生的四个必要条件" class="headerlink" title="3.死锁产生的四个必要条件"></a>3.死锁产生的四个必要条件</h3><ul>
+<li><strong>互斥条件：</strong>在一段时间内某资源仅为一进程所占用。</li>
+<li><strong>请求和保持条件：</strong>当进程因请求资源阻塞时，对已获得的资源保持不放。</li>
+<li><strong>不剥夺条件：</strong>进程已获得的资源在未使用完之前，不能剥夺。</li>
+<li><strong>环路等待条件：</strong>发生死锁时，必然存在一个“进程-资源”的环形链。</li>
+</ul>
+<p>PS：环形链例如一个进程集合{p0, p1, .. pn}，p0等待p1占用的资源，p1等待p2占用的资源…pn等待p0占用的资源。</p>
+<h3 id="4-解决死锁的基本方法"><a href="#4-解决死锁的基本方法" class="headerlink" title="4.解决死锁的基本方法"></a>4.解决死锁的基本方法</h3><h4 id="（1）预防死锁（破坏上述必要条件）"><a href="#（1）预防死锁（破坏上述必要条件）" class="headerlink" title="（1）预防死锁（破坏上述必要条件）"></a>（1）预防死锁（破坏上述必要条件）</h4><ul>
+<li>资源一次性分配。</li>
+<li>只要有一个资源得不到分配，则不给该进程分配其他资源。</li>
+<li>当某进程获得部分资源但得不到其他资源，则释放已占有的资源。</li>
+<li>系统为每类资源赋予一个编号，每个进程按编号递增的顺序请求资源。</li>
+</ul>
+<h4 id="（2）避免死锁"><a href="#（2）避免死锁" class="headerlink" title="（2）避免死锁"></a>（2）避免死锁</h4><p>允许进程动态地申请资源，因而系统在进行资源分配之前预先计算资源分配的安全性。若此次分配不会导致系统进入不安全状态，则将资源分配给进程，否则进程等待。</p>
+<blockquote>
+<p><strong>银行家算法：</strong>状态是当前给进程分配的资源情况，包括两个向量和两个矩阵。</p>
+<p>*两个向量：<code>Resource</code>（系统每种资源的总量）和<code>Available</code>（未分配给进程的每种资源的总量）；</p>
+<p>*两个矩阵：<code>Claim</code>（进程对资源的需求）和<code>Allocation</code>（当前分配给进程的资源）</p>
+<p>当进程请求一组资源时，计算同意请求前后的系统状态变化，判断结果是否仍处于安全状态；是则同意，不是则阻塞。</p>
+</blockquote>
+<h4 id="（3）检测死锁"><a href="#（3）检测死锁" class="headerlink" title="（3）检测死锁"></a>（3）检测死锁</h4><p>为每个进程和资源指定唯一编号，并建立资源分配表和进程等待表，根据死锁定理判断。</p>
+<blockquote>
+<p><strong>死锁定理：</strong>如果资源分配图中没有环路，则系统没有死锁；如果出现环路，则可能有死锁。</p>
+</blockquote>
+<p><strong>Java检测死锁的方式：</strong>Jconsole（JDK自带监控工具，查找死锁线程，监控资源消耗与性能）、JStack（JVM自带堆栈跟踪工具，打印线程快照，调试堆栈信息）、ThreadMXBean。</p>
+<h4 id="（4）解除死锁"><a href="#（4）解除死锁" class="headerlink" title="（4）解除死锁"></a>（4）解除死锁</h4><p>剥夺资源或撤销进程。</p>
 
     </div>
 
@@ -309,6 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%BB%E9%94%81%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是死锁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%A7%E7%94%9F%E6%AD%BB%E9%94%81%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.</span> <span class="nav-text">2.产生死锁的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%AD%BB%E9%94%81%E4%BA%A7%E7%94%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">3.死锁产生的四个必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%A7%A3%E5%86%B3%E6%AD%BB%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">4.解决死锁的基本方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%A2%84%E9%98%B2%E6%AD%BB%E9%94%81%EF%BC%88%E7%A0%B4%E5%9D%8F%E4%B8%8A%E8%BF%B0%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">（1）预防死锁（破坏上述必要条件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%81%BF%E5%85%8D%E6%AD%BB%E9%94%81"><span class="nav-number">4.2.</span> <span class="nav-text">（2）避免死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%A3%80%E6%B5%8B%E6%AD%BB%E9%94%81"><span class="nav-number">4.3.</span> <span class="nav-text">（3）检测死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E8%A7%A3%E9%99%A4%E6%AD%BB%E9%94%81"><span class="nav-number">4.4.</span> <span class="nav-text">（4）解除死锁</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -322,7 +354,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
