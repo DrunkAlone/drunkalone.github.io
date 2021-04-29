@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/04/08/java-interview-jvm/1.png">
 <meta property="article:published_time" content="2021-04-08T02:08:27.000Z">
-<meta property="article:modified_time" content="2021-04-28T10:03:22.937Z">
+<meta property="article:modified_time" content="2021-04-29T12:19:26.607Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-28 18:03:22" itemprop="dateModified" datetime="2021-04-28T18:03:22+08:00">2021-04-28</time>
+                <time title="修改时间：2021-04-29 20:19:26" itemprop="dateModified" datetime="2021-04-29T20:19:26+08:00">2021-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -288,8 +288,23 @@
 <p>（2）序列化：所有涉及的类实现接口Serializable。</p>
 <h4 id="9-内存泄漏和内存溢出的区别"><a href="#9-内存泄漏和内存溢出的区别" class="headerlink" title="9.内存泄漏和内存溢出的区别"></a>9.内存泄漏和内存溢出的区别</h4><ul>
 <li><strong>内存溢出：</strong>程序申请内存时，没有足够的内存空间供其使用。</li>
-<li><strong>内存泄漏：</strong>程序申请内存后，无法释放已申请的内存。</li>
+<li><strong>内存泄漏：</strong>程序申请内存后，无法释放已申请的内存。具体例如保存了较多静态变量，但不使用其对象引用，从而导致无法被垃圾回收，数量大时引起内存泄漏。</li>
 </ul>
+<h4 id="10-如何定位内存泄漏"><a href="#10-如何定位内存泄漏" class="headerlink" title="10.如何定位内存泄漏"></a>10.如何定位内存泄漏</h4><p>（1）verbose命令输出该程序的GC日志，分析每次GC之后内存是否增加。</p>
+<p>（2）jinfo命令查看JVM启动信息。</p>
+<p>（3）jmap -dump查看堆内存。</p>
+<h3 id="（三）类加载过程"><a href="#（三）类加载过程" class="headerlink" title="（三）类加载过程"></a>（三）类加载过程</h3><p>类的加载过程主要分为七个阶段：<strong>加载</strong>、<strong>验证</strong>、<strong>准备</strong>、解析、<strong>初始化</strong>、使用、<strong>卸载</strong>。其中加粗部分顺序确定，严格按照该顺序执行。</p>
+<p><strong>（1）加载</strong></p>
+<p>通过一个类的全限定名加载该类对应的二进制字节流，主要通过类加载器实现。会在内存中生成该类的java.lang.Class对象，作为方法区各类访问该类的入口。</p>
+<p><strong>（2）验证</strong></p>
+<p>该阶段进行文件格式、元数据、字节码、符号引用等验证。</p>
+<p><strong>（3）准备</strong></p>
+<p>将静态变量在方法区进行内存分配并初始化。</p>
+<p><strong>（4）解析</strong></p>
+<p>进行类或接口、字段、类方法、接口方法等解析。</p>
+<p>类或接口解析：将符号引用转化为类的直接引用，并检查访问权限。</p>
+<p><strong>（5）初始化</strong></p>
+<p>编译器将类文件声明的静态赋值变量和静态区域合并，生成方法进行调用。</p>
 
     </div>
 
@@ -374,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">（一）垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%93%AA%E4%BA%9B%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.哪些内存需要回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么时候回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">5.垃圾回收流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%A0%87%E8%AE%B0%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">6.垃圾回收器为什么需要重新标记？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E5%8F%8A%E5%A0%86%E6%A0%88%E5%8F%98%E9%87%8F%E6%B1%A0"><span class="nav-number">2.</span> <span class="nav-text">（二）内存分布及堆栈变量池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">7.深拷贝和浅拷贝的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">8.深拷贝和浅拷贝的实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">9.内存泄漏和内存溢出的区别</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">（一）垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.主要任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%93%AA%E4%BA%9B%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.哪些内存需要回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么时候回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">5.垃圾回收流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%A0%87%E8%AE%B0%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">6.垃圾回收器为什么需要重新标记？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E5%8F%8A%E5%A0%86%E6%A0%88%E5%8F%98%E9%87%8F%E6%B1%A0"><span class="nav-number">2.</span> <span class="nav-text">（二）内存分布及堆栈变量池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">7.深拷贝和浅拷贝的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">8.深拷贝和浅拷贝的实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">9.内存泄漏和内存溢出的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">10.如何定位内存泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">（三）类加载过程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -388,7 +403,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -401,7 +416,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="本篇汇总Redis知识点及常见面试题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-25T13:05:01.000Z">
-<meta property="article:modified_time" content="2021-04-26T14:35:15.599Z">
+<meta property="article:modified_time" content="2021-04-29T12:05:42.043Z">
 <meta property="article:author" content="DrunkAlone">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面试题">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-26 22:35:15" itemprop="dateModified" datetime="2021-04-26T22:35:15+08:00">2021-04-26</time>
+                <time title="修改时间：2021-04-29 20:05:42" itemprop="dateModified" datetime="2021-04-29T20:05:42+08:00">2021-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,6 +281,13 @@
 <p><strong>allkeys-random：</strong>从数据集中任意选择数据淘汰。</p>
 <p><strong>no-enviction：</strong>禁止驱逐数据。</p>
 <h3 id="10-Redis的同步机制"><a href="#10-Redis的同步机制" class="headerlink" title="10.Redis的同步机制"></a>10.Redis的同步机制</h3><p>Redis可以使用主从同步和从从同步。第一次同步时，主节点做一次basave，并同时将后续修改操作记录到内存buffer，待完成后将rdb文件同步至复制节点，复制节点接受完成后将rdb镜像加载至内存。加载完成后，再通知主节点将期间修改的操作记录同步至复制节点进行重放。</p>
+<h3 id="11-Redis如何保证缓存与数据库双写时的一致性"><a href="#11-Redis如何保证缓存与数据库双写时的一致性" class="headerlink" title="11.Redis如何保证缓存与数据库双写时的一致性"></a>11.Redis如何保证缓存与数据库双写时的一致性</h3><p><strong>问题描述：</strong>对于缓存+数据库读写模式，更新时通常采用“先更新数据库，再删除缓存”的方式。如果删除缓存失败了，会导致数据库存放新数据，而缓存中存放旧数据的情况，数据不一致。</p>
+<p><strong>解决：</strong>先删除缓存，再修改数据库。如果数据库修改失败，那么数据库存放旧数据，缓存为空。在读取数据时，因缓存为空，会先从数据库中读取旧数据，再更新至缓存中。</p>
+<h3 id="12-Redis的集群模式"><a href="#12-Redis的集群模式" class="headerlink" title="12.Redis的集群模式"></a>12.Redis的集群模式</h3><ul>
+<li><strong>主从模式：</strong>数据库分为主数据库和从数据库。当slave启动后，主动向master发送SYNC命令。master收到SYNC命令后在后台保存快照，然后将保存的快照发送给slave。slave接收快照文件和命令后加载快照文件和缓存的执行命令。</li>
+<li><strong>Sentinel模式（哨兵模式）：</strong>哨兵是一个独立的进程，会独立运行。哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例。当哨兵检测到master宕机，会自动将slave切换成master，然后通知其他从服务器修改配置文件切换主机。</li>
+<li><strong>Cluster模式：</strong>前二者的集合体。可以实现主从和master重选功能，多个redis节点网络互联，数据共享，所有节点一主一从，支持在线增加和删除节点。</li>
+</ul>
 
     </div>
 
@@ -366,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFRedis%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Redis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">2.Redis的数据类型及应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8Redis%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.使用Redis的好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">4.Redis持久化机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">5.Redis的持久化方式及优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Redis%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">6.Redis优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Redis%E5%92%8CMemcached%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">7.Redis和Memcached的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E3%80%81%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD%E3%80%81%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E3%80%81%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7"><span class="nav-number">8.</span> <span class="nav-text">8.缓存雪崩、缓存穿透、缓存预热、缓存更新、缓存降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Redis%E5%85%AD%E5%A4%A7%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">9.</span> <span class="nav-text">9.Redis六大回收策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Redis%E7%9A%84%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">10.</span> <span class="nav-text">10.Redis的同步机制</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFRedis%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Redis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">2.Redis的数据类型及应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8Redis%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3.使用Redis的好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">4.Redis持久化机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">5.Redis的持久化方式及优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Redis%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">6.Redis优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Redis%E5%92%8CMemcached%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">7.Redis和Memcached的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E3%80%81%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD%E3%80%81%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E3%80%81%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7"><span class="nav-number">8.</span> <span class="nav-text">8.缓存雪崩、缓存穿透、缓存预热、缓存更新、缓存降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Redis%E5%85%AD%E5%A4%A7%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">9.</span> <span class="nav-text">9.Redis六大回收策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Redis%E7%9A%84%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">10.</span> <span class="nav-text">10.Redis的同步机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8C%E5%86%99%E6%97%B6%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">11.</span> <span class="nav-text">11.Redis如何保证缓存与数据库双写时的一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Redis%E7%9A%84%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">12.</span> <span class="nav-text">12.Redis的集群模式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -380,7 +387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -393,7 +400,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
