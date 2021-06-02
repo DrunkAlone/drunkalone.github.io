@@ -20,16 +20,18 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="personal blog">
+  <meta name="description" content="本篇汇总二叉树的类定义以及各种遍历实现，包括递归遍历及非递归遍历等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="binaryTreeTraverse">
+<meta property="og:title" content="二叉树遍历binaryTreeTraverse">
 <meta property="og:url" content="http://example.com/2021/04/30/binaryTreeTraverse/index.html">
 <meta property="og:site_name" content="Forgiven">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="本篇汇总二叉树的类定义以及各种遍历实现，包括递归遍历及非递归遍历等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-30T05:15:43.000Z">
-<meta property="article:modified_time" content="2021-04-30T05:15:43.804Z">
+<meta property="article:modified_time" content="2021-04-30T09:14:42.314Z">
 <meta property="article:author" content="DrunkAlone">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2021/04/30/binaryTreeTraverse/">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>binaryTreeTraverse | Forgiven</title>
+  <title>二叉树遍历binaryTreeTraverse | Forgiven</title>
   
 
 
@@ -179,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          binaryTreeTraverse
+          二叉树遍历binaryTreeTraverse
         </h1>
 
         <div class="post-meta">
@@ -188,8 +190,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-04-30 13:15:43" itemprop="dateCreated datePublished" datetime="2021-04-30T13:15:43+08:00">2021-04-30</time>
+              <time title="创建时间：2021-04-30 13:15:43 / 修改时间：17:14:42" itemprop="dateCreated datePublished" datetime="2021-04-30T13:15:43+08:00">2021-04-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%93%E9%A2%98%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">专题知识点</span></a>
+                </span>
             </span>
 
           
@@ -203,7 +215,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>本篇汇总二叉树的类定义以及各种遍历实现，包括递归遍历及非递归遍历等。</p>
+<span id="more"></span>
+
+<h4 id="二叉树类定义"><a href="#二叉树类定义" class="headerlink" title="二叉树类定义"></a>二叉树类定义</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> val, TreeNode left, TreeNode right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.left = left;</span><br><span class="line">        <span class="keyword">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="二叉树的建立"><a href="#二叉树的建立" class="headerlink" title="二叉树的建立"></a>二叉树的建立</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title">createBinaryTree</span><span class="params">(LinkedList&lt;Integer&gt; list)</span></span>&#123;</span><br><span class="line">    TreeNode node = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span>(list == <span class="keyword">null</span> || list.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//移除第一个元素并返回其值</span></span><br><span class="line">    Integer data = list.removeFirst();</span><br><span class="line">    <span class="keyword">if</span>(data != <span class="keyword">null</span>)&#123;</span><br><span class="line">        node = <span class="keyword">new</span> TreeNode(data);</span><br><span class="line">        node.left = createBinaryTree(list);</span><br><span class="line">        node.right = createBinaryTree(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="递归前序遍历"><a href="#递归前序遍历" class="headerlink" title="递归前序遍历"></a>递归前序遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preOrderTraverse</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(node.val);</span><br><span class="line">    preOrderTraverse(node.left);</span><br><span class="line">    preOrderTraverse(node.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="非递归前序遍历"><a href="#非递归前序遍历" class="headerlink" title="非递归前序遍历"></a>非递归前序遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preOrderTraverse</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line">    TreeNode tree = node;</span><br><span class="line">    <span class="keyword">while</span>(tree != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">while</span>(tree != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.println(tree.val);</span><br><span class="line">            stack.push(tree);</span><br><span class="line">            tree = tree.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            tree = stack.pop();</span><br><span class="line">            tree = tree.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="非递归中序遍历"><a href="#非递归中序遍历" class="headerlink" title="非递归中序遍历"></a>非递归中序遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">inOrderTraverse</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line">    TreeNode tree = node;</span><br><span class="line">    <span class="keyword">while</span>(tree != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">while</span>(tree != <span class="keyword">null</span>)&#123;</span><br><span class="line">            stack.push(tree);</span><br><span class="line">            tree = tree.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            tree = stack.pop();</span><br><span class="line">            System.out.println(tree);</span><br><span class="line">            tree = tree.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="非递归后序遍历"><a href="#非递归后序遍历" class="headerlink" title="非递归后序遍历"></a>非递归后序遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -211,6 +240,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"># 二叉树</a>
+          </div>
 
         
 
@@ -280,6 +313,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%B1%BB%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">二叉树类定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="nav-number">2.</span> <span class="nav-text">二叉树的建立</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">3.</span> <span class="nav-text">递归前序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">4.</span> <span class="nav-text">非递归前序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">5.</span> <span class="nav-text">非递归中序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">6.</span> <span class="nav-text">非递归后序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">7.</span> <span class="nav-text">层序遍历</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
